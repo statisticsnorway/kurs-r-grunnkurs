@@ -26,6 +26,10 @@ paste("Hello", "Susie")
 paste("Hello", "Susie", sep = ", ")
 paste("Susie er", 39, "år gammel")
 
+# Plukk ut noen character i en string
+substr("Susie liker kake", 1, 2)
+substr("Susie liker kake", 13, 16)
+
 
 
 #### Objekter ####
@@ -41,6 +45,8 @@ grunnlagt
 
 sted <- "Oslo"
 sted
+
+
 
 # Objekttype
 str(sted)
