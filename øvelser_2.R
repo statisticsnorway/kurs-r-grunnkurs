@@ -24,9 +24,11 @@
 
 # 5) Åpne datasett "ytelser.csv" uten å lese det inn. Hvilken skilletegn og desimaltegn brukes? 
 # Datasett ligger under mappen "data"
+# Hint: Finn det under "Files" vindu og klikk på det > deretter "View File" 
 
 
 # 6) Les inn datasett "ytelser.csv"
+# Hint: husk å bruke " " og hvor det ligger
 
 
 
