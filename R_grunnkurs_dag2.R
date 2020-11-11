@@ -186,6 +186,14 @@ kommunedata %>%
   scale_y_continuous(labels = scales::comma) +
   scale_x_continuous(labels = scales::comma)
 
+# Gir akser et nytt navn
+kommunedata %>%
+  filter(region_type == "kommune") %>% 
+  ggplot(aes(x = folkemengde, y = bruttoinnt)) + 
+  geom_point(aes(color = kjonn)) +
+  scale_y_continuous(labels = scales::comma, name = "Brutto inntekt") +
+  scale_x_continuous(labels = scales::comma, name = "Antall personer")
+
 
 #### Lagre figur ####
 png(file = "folkemengde_inntekt.png")
