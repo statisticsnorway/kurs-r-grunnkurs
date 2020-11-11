@@ -40,7 +40,7 @@ sted <- "Kongsvinger Festning"
 sted
 
 # Objekter kan overskrives
-grunnlagt <- gunnlagt + 1
+grunnlagt <- grunnlagt + 1
 grunnlagt
 
 sted <- "Oslo"
@@ -51,6 +51,7 @@ sted
 # Objekttype
 str(sted)
 str(grunnlagt)
+
 
 
 
