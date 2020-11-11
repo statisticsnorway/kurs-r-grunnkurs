@@ -1,7 +1,9 @@
 ## Introduksjon til R kurs
 ## Dag 2: Øvelser 3
 
+
 # 1) Les inn "ytelser.csv" som ligger i data-mappen
+library(tidyverse)
 ytelser <- read_csv2("./data/ytelser.csv")
 
 
@@ -67,21 +69,21 @@ ytelser %>%
 befolkning <- read_csv2('./data/befolkning.csv')
 
 
-# 2) Filter datasett så at det kun inneholder antall som er 65+ år per kommune for 2015
-# Bruk select for å kun beholde variabler Region og value
+# 2) Filter datasett så at det kun inneholder antall som er 65+ år per kommune
+# Bruk select for å kun beholde variabler Region, value og Tid
 # Hint: aldergruppe for de 65+ år heter "F65+"
 befolkning <- befolkning %>%
-  filter(Alder == "F65+", Tid == 2015) %>%
-  select(Region, value)
+  filter(Alder == "F65+") %>%
+  select(Region, value, Tid)
 
-# 3) Endre navn til variabel value til "befolk65_2015"
+# 3) Endre navn til variabel "value" til "befolk65"
 befolkning <- befolkning %>%
-  rename(befolk65_2015 = value)
+  rename(befolk65 = value)
 
 
-# 4) Koble ytelser og befolkning datasett sammen ved kommunenummer som nøkkelvariabel
-# Behold alle rader i ytelserdatasett
-ytelser <- left_join(ytelser, befolkning, by = c("kommune_nr" = "Region"))
+# 4) Koble ytelser og befolkning datasett sammen ved kommunenummer og år som nøkkelvariabel
+# Behold kun alle rader i ytelserdatasett
+ytelser <- left_join(ytelser, befolkning, by = c("kommune_nr" = "Region", "aar" = "Tid"))
 summary(ytelser)
 
 
@@ -111,11 +113,11 @@ ytelser %>%
 ytelser %>% 
   group_by(aar) %>% 
   summarise(ytelser = sum(utbetalt_mill_kr)/1000) %>% 
-  ggplot(aes(x= aar, y = ytelser)) + 
+  ggplot(aes(x = aar, y = ytelser)) + 
   geom_line() +
-  scale_x_continuous(name = "år") +
-  scale_y_continuous(name = "utbetalt ytelser (milliarder)",
-                     limits = c(0, 500))
+  xlab("år") +
+  ylab("utbetalt ytelser (milliarder)") + 
+  ylim(0, 500)
 
 
 # 8) Lage en ny linjediagram for ytelser per år farget etter stønadsområde.
