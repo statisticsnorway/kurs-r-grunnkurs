@@ -10,7 +10,7 @@
 
 
 # 2) Filter datasett så at det kun inneholder antall som er 65+ år per kommune for 2015
-# Bruk select for å kun beholde variabler Region og value
+# Bruk select for å kun beholde variabler Region, value og Tid
 # Hint: aldergruppe for de 65+ år heter "F65+"
 
 
@@ -22,8 +22,8 @@
 
 
 
-# 4) Koble ytelser og befolkning datasett sammen ved kommunenummer som nøkkelvariabel
-# Behold alle rader i ytelserdatasett
+# 4) Koble ytelser og befolkning datasett sammen ved kommunenummer og år som nøkkelvariabel
+# Behold alle rader/observasjoner i ytelserdatasett
 
 
 
@@ -51,8 +51,7 @@
 
 
 # 7) Lage samme plott av ytelser men legg til akse-navn som er mer meningsfult
-# Hint: bruk scale_x_coninuous og tilsvarende for y
-# Hint: skriv ?scale_x_continuous for hjelpfil
+# Hint: bruk xlab og ylab eller scale_x_coninuous og scale_y_continuous
 
 
 

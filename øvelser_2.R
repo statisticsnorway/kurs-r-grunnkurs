@@ -12,7 +12,7 @@
 
 
 
-# 3) Hvor mange objekter har du lagret i arbeidsmiljø nå?
+# 3) Hvor mange objekter har du lagret i minne/Global Environment?
 
 
 
