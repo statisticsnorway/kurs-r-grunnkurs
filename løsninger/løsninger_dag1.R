@@ -38,7 +38,7 @@ length(antall_ansatte)
 
 
 #################################################################################
-# Dag 1: Øvelser 2
+#### Dag 1: Øvelser 2 ####
 
 ### Logiske setninger
 
@@ -50,7 +50,7 @@ antall_ansatte < 5
 9 %in% antall_ansatte
 
 
-# 3) Hvor mange objekter har du lagret i arbeidsmiljø nå?
+# 3) Hvor mange objekter har du lagret i minne/Global Environments nå?
 length(ls()) # eller titt på Environments
 
 
@@ -72,7 +72,7 @@ ytelser <- read_csv2("data/ytelser.csv")
 glimpse(ytelser)
 
 
-# 8) Hva slage type variabel er kommune_nr_navn?
+# 8) Hva slags type variabel er kommune_nr_navn?
 glimpse(ytelser)
 
 
