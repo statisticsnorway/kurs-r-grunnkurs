@@ -57,7 +57,7 @@ kommunedata %>%
 
 #### Oppsummering/aggreging ####
 kommunedata %>%
-  summarise(mean(folkemengde))
+  summarise(average = mean(folkemengde))
 
 kommunedata %>%
   filter(region_type == "kommune", kjonn == 1) %>%
@@ -93,6 +93,9 @@ kommunedata %>%
 
 
 
+
+###########################################################################################
+# DAG 1: Del 2
 #### Kobler datasett ####
 library(haven)
 trygd <- read_sas("./data/trygd.sas7bdat")
@@ -195,6 +198,7 @@ kommunedata %>%
   scale_x_continuous(labels = scales::comma, name = "Antall personer")
 
 
+
 #### Lagre figur ####
 png(file = "folkemengde_inntekt.png")
 
@@ -213,4 +217,6 @@ dev.off()
 #### Eksportere data/en tabell til excel ####
 library(openxlsx)
 write.xlsx(kommunedata, file = "kommune_data.xlsx")
+
+
 
