@@ -69,7 +69,7 @@
 
 
 # 9) lage en punktdiagram av antall 65+ og utbetalt for stønadsområde "Alderspensjon" for 2015
-# Legg på en regresjonlinje
+# Legg på en regresjonlinje om du ønsker
 
 
 

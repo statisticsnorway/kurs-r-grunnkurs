@@ -46,8 +46,8 @@
 
 
 
-# 7) Hvor mange forsekjllige type ytelser ble utbetalt i Oslo i 2014? (Som er i datasett)
-# Hint: bruk funksjon n() innen summarise() for å teller antall rader
+# 7) Hvor mange forsekjllige typer ytelser ble utbetalt i Oslo i 2014? (Som er i datasett)
+# Hint: bruk funksjon n() innen summarise() for å telle antall rader
 
 
 
