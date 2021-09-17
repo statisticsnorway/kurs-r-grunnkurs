@@ -10,21 +10,11 @@
 
 
 
-# 3) Lim navn-objekt sammen med en hyggelig meldling til deg selv og skriv til console.
+# 3) Slå opp hjelpfilen for funksjonen nchar
 
 
 
-# 4) Slå opp hjelpfilen for funksjonen nchar
+# 4) Bruk funksjonen nchar for å se hvor mange bokstaver navnet ditt innholder
 
 
 
-# 5) Bruk funksjonen nchar for å se hvor mange bokstaver navnet ditt innholder
-
-
-
-# 6) Lage en vektor som inneholder tre forskjellige tall. Kalle listen antall_ansatte
-# Dette skal vi bruke i neste øvelse
-
-
-
-# Sjekk lengde av antall_ansatte med funksjonen length()

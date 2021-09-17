@@ -3,16 +3,17 @@
 # Dag 1: Øvelser 2
 
 ### Logiske setninger
-
-# 1) Skrive en test for og ser hvilken i listen antall_ansatte er mindre enn 5.
-
-
-
-# 2) Skrive en test for å se om nummer 9 er i listen antall_ansatte
+# 1) Lage en vektor som inneholder tre forskjellige tall. Kalle listen antall_ansatte
 
 
 
-# 3) Hvor mange objekter har du lagret i minne/Global Environment?
+# 2) Skrive en test for å se hvilken i listen antall_ansatte er mindre enn 5.
+
+
+
+# 3) Skrive en test for å se om nummer 9 er i listen antall_ansatte
+
+
 
 
 
@@ -28,7 +29,7 @@
 
 
 # 6) Les inn datasett "ytelser.csv"
-# Hint: husk å bruke " " og hvor det ligger
+
 
 
 
@@ -36,7 +37,9 @@
 
 
 
-# 8) Hva slage type variabel er kommune_nr_navn?
+
+# 8) Hva slags type variabel er kommune_nr_navn?
+
 
 
 
