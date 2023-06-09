@@ -1,8 +1,8 @@
-# R_grunnkurs
+# SSBs grunnkurs in R
 This repository contains course material for SSBs introductory course in R. The material is part of a course held for internal users at SSB. 
 It contains example code and practice datasets, exercises and solutions for the course held in two sessions over two days. 
 
-For SSB wrokers, videos of the online course are availble for watching on Stream with links below
+For SSB workers, videos of the online course are availble for watching on Stream with links below
 
 Part 1: **Introduction to R**
 What is R and why do we use it in SSB? How do we start R and what is an object and a vector? [Introduction to R](https://web.microsoftstream.com/video/8846dced-ca77-449a-a927-b36c4caa53cb)
