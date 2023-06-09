@@ -1,4 +1,4 @@
-# SSBs grunnkurs in R
+# SSBs foundation course in R
 This repository contains course material for SSBs introductory course in R. The material is part of a course held for internal users at SSB. 
 It contains example code and practice datasets, exercises and solutions for the course held in two sessions over two days. 
 
