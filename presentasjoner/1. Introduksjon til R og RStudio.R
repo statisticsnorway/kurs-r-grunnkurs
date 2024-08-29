@@ -51,8 +51,12 @@
 #
 # Når du installerer og laster inn Tidyverse-pakken, får du tilgang til en rekke andre kraftige pakker som er svært nyttige for datamanipulering, visualisering, importering, og mer. Vi vil se nærmere på funksjoner fra Tidyverse senere i kurset.
 
-# install.packages("tidyverse")  # Gjør dette bare én gang dersom pakken ikke er installert
-library(tidyverse)  # Dette må du gjøre hver gang du starter en ny R-sesjon
+# +
+# Gjør dette bare én gang dersom pakken ikke er installert
+# install.packages("tidyverse")  
+
+# Dette må du gjøre hver gang du starter en ny R-sesjon
+library(tidyverse)  
 
 # +
 # suppressPackageStartupMessages({
