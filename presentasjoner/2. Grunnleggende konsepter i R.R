@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
-# # Grunnkurs i R
-
 # ## Grunnleggende konsepter i R
 #
 # ### Objekter og objekttyper
-# I R kan nesten alt betraktes som et objekt. Objekter kan lagre/inneholde ulike typer data. De vanligste objekttypene inkluderer:
+# I R kan nesten alt betraktes som et objekt. Objekter kan inneholde ulike typer data og de vanligste objekttypene inkluderer:
 #
-# + `Numerisk`: Representerer tall, enten heltall (`integer`) eller flyttall (`double`). F.eks. 4 og -2.5
-# + `Karakter`: Representerer tekststrenger (`character`). Disse er omgitt av enten enkle eller doble anførselstegn. F.eks. "Dette er en tekst" og 'R er nyttig'.
-# + `Boolsk`: Representerer sannhetsverdier (`logical`). Det er kun to mulige verdier: TRUE eller FALSE.
+# + `Numeriske verdier`: representerer tall, enten heltall (`integer`) eller flyttall (`double`). F.eks. 4 og -2.5
+# + `Karakterverdier`: representerer tekststrenger (`character`). Disse er omgitt av enten enkle eller doble anførselstegn. F.eks. "Dette er en tekst" og 'R er nyttig'.
+# + `Boolske verdier`: representerer sannhetsverdier (`logical`). Det er kun to mulige verdier: TRUE eller FALSE.
 #
-# Et objekt opprettes ved å gi det et navn (f.eks. `numerisk_objekt`) etterfulgt av en pil (`<-`). Innholdet man ønsker å lagre i objektet kommer etter pilen. Det er imidlertid noen regler for navngivning av objekter i R:
+# Et objekt opprettes ved å gi det et navn (f.eks. `numerisk_objekt`) etterfulgt av en pil (`<-`). Innholdet man ønsker å lagre i objektet kommer etter pilen. Det er imidlertid noen regler og forbehold for navngivning av objekter i R:
+#
 # + Kan kun inneholde bokstaver, tall, understrek og punktum
 # + Må starte starte med en bokstav eller et punktum
-# + Skille mellom store og små bokstaver
+# + Skiller mellom store og små bokstaver
 # + Unngå reserverte ord (f.eks. TRUE/FALSE og navn på funksjoner)
 
 # #### Numeriske verdier
@@ -77,11 +76,11 @@ class(karakter_objekt)
 #
 # + `==`: er det lik?
 # + `!=`: er det ikke lik?
-# + `>`: større enn
-# + `>=`: større enn eller lik
-# + `<`: mindre enn
-# + `<=`: mindre enn eller lik
-# + `%in%`: en av flere verdier
+# + `>`: er det større enn?
+# + `>=`: er det større enn eller lik?
+# + `<`: er det mindre enn?
+# + `<=`: der det mindre enn eller lik?
+# + `%in%`: er det lik én av flere verdier?
 
 "Kongsvinger" == "Kongsvinger" # test for likhet
 "Kongsvinger" == "kongsvinger" # test for likhet
@@ -92,7 +91,7 @@ boolsk_objekt
 class(boolsk_objekt)
 
 
-# I R kan du bruke boolske verdier i betingelser som if-setninger, løkker, eller for å filtrere data. I eksempelet under kjøres kun koden dersom betingelsen for at årgang er lik 2023 oppfylles.
+# I R kan du bruke boolske verdier i betingelser som `if`-setninger, løkker, eller for å filtrere data. I eksempelet under kjøres kun koden dersom betingelsen for at årgang er lik 2023 oppfylles.
 
 # +
 aargang <- 2023
@@ -102,6 +101,8 @@ if (aargang == 2023){
   print("Kjør denne koden for 2023-årgangen") # Koden som kjøres dersom betingelsen er TRUE
 }
 # -
+
+# En `if`-setning i R brukes til å utføre en bestemt kodeblokk basert på en betingelse. Hvis betingelsen er sann (`TRUE`), vil koden i `if`-blokken bli utført. Hvis betingelsen er usann (`FALSE`), kan du bruke en `else`-blokk til å utføre en alternativ kode.
 
 if (5 > 2){
   print("Fem er større enn to")
@@ -257,6 +258,7 @@ data <- data.frame(
   er_student = c(TRUE, TRUE, FALSE, TRUE)
 )
 
+class(data)
 data
 # -
 
@@ -266,7 +268,12 @@ data$navn
 data$alder
 data$er_student
 
-unique(data$navn)
+# Man kan også opprette nye kolonner i en eksisterende data frame:
+
+data$aar <- 2024
+data$aar
+
+unique(data$aar)
 
 # På samme måte om man kan hente ut enkelte elementer fra en vektor kan man hente ut valgte rader og kolonner fra en data frame med `[]`. Her oppgir nummer på rad og kolonne separert med komma, f.eks. rad 1 kolonne 3:
 
@@ -284,6 +291,7 @@ data[,1]
 
 # +
 summary(data)
+summary(data$alder)
 
 nrow(data)
 ncol(data)
@@ -293,3 +301,5 @@ colnames(data)
 pillar::glimpse(data)
 Hmisc::describe(data)
 
+
+summary(data$alder)

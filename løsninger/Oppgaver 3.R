@@ -4,8 +4,8 @@ library(tidyverse)
 # ### Uføretrygdede
 #
 # Last inn datasettene `uforetrygdede` og `befolkning` i cellen nedenfor.
-# + `uforetrygdede`: tabell 11695: Uføretrygdede, etter kjønn
-# + `befolkning`: tabell 07459: Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning
+# + `uforetrygdede` - tabell 11695: Uføretrygdede, etter kjønn
+# + `befolkning` - tabell 07459: Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning
 #
 # Lag et nytt objekt `befolkning_18_67_per_fylke` ut fra `befolkning` der du har gjort følgende:
 # + Opprett en ny variabel som heter `Alder_num` som inneholder verdiene fdra `Alder` omgjort til numerisk
@@ -21,6 +21,8 @@ library(tidyverse)
 # + Kobler på `befolkning_18_67_per_fylke` etter køblingsnøkkelen `c(Region = Region_ny)`
 # + Oppretter en ny variabel `andel` som inneholder uføretrygdede i prosent av befolkningen per fylke. Rund av til én desimal
 # + Sjekk at resultatene blir det samme som i objektet `uforetrygdede` (`ContentsCode` = "UforetrygdPros")
+
+
 
 # +
 uforetrygdede <- PxWebApiData::ApiData(11695, 
@@ -73,8 +75,11 @@ mutate(diff = andel-UforetrygdPros)
 # ### Yrkesfordelt månedslønn
 #
 # Last inn objektene `yrkesfordelt_manedslonn` og `yrkesklassifisering_klass` i cellen nedenfor. Variabelen `Yrke` inneholder ulike yrkeskoder med 1-4 siffer.
+# + `yrkesfordelt_manedslonn`: - tabell 11418: Yrkesfordelt månedslønn, etter sektor, kjønn og arbeidstid
+# + `yrkesklassifisering_klass` - klassifiksjon 7: Standard for yrkesklassifisering
 #
-# + Lag et nytt objekt som heter `yrkesfordelt_manedslonn_4` som kun inneholder rader med yrkeskoder som består av fire siffer. Endre navn på variablene `Yrke` og `value`  til henholdsvis `Yrke_4` og `Manedslonn_4`. Gjør deretter det samme med yrker med 3, 2 og 1 siffer slik at du endre opp med totalt fire datasett med forskjellige nivåer av yrkeskoder (`yrkesfordelt_manedslonn_4`, `yrkesfordelt_manedslonn_3`, ,`yrkesfordelt_manedslonn_2` `yrkesfordelt_manedslonn_1`).
+# Lag et nytt objekt som heter `yrkesfordelt_manedslonn_4` som kun inneholder rader med yrkeskoder som består av fire siffer. 
+# + Endre navn på variablene `Yrke` og `value`  til henholdsvis `Yrke_4` og `Manedslonn_4`. Gjør deretter det samme med yrker med 3, 2 og 1 siffer slik at du endre opp med totalt fire datasett med forskjellige nivåer av yrkeskoder (`yrkesfordelt_manedslonn_4`, `yrkesfordelt_manedslonn_3`, ,`yrkesfordelt_manedslonn_2` `yrkesfordelt_manedslonn_1`).
 # + Opprett tre nye variabler (`Yrke_3`, `Yrke_2` og `Yrke_1`) i datasettet `yrkesfordelt_manedslonn_4` som inneholder de 3 første, 2 første og det første sifferet i variabelen `Yrke_4`.
 # + Koble deretter sammen alle objektene slik at datasettet inneholder alle disse kolonnene: `Yrke_4`, `Manedslonn_4`, `Yrke_3`, `Yrke_2`, `Yrke_1`, `Manedslonn_3`, `Manedslonn_2`, `Manedslonn_1`
 # + Koble på slutt navn på yrkesvariablene fra kodelisten `yrkesklassifisering_klass`

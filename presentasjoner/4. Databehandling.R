@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# # Grunnkurs i R
-
 # ## Databehandling
 #
 # Det er mange forskjellige pakker og tilnærminger til databehandling i R. I dette kurset vil vi ha et spesielt fokus på Tidyverse. Tidyverse er bygget på prinsippet om "tidy data", hvor hver variabel danner en kolonne, hver observasjon/enhet danner en rad, og hver celle i datasettet inneholder en enkelt verdi.
@@ -31,8 +29,8 @@ befolkning_per_fylke <- befolkning_per_fylke %>%
 # ### Selektering av kolonner (`select`)
 #
 # + `select()`: funksjon for å selektere ønskede variabler. Om man heller ønsker å kun oppgi hvilke variabler som skal utelates settes tegnet `-` foran kolonnenavnet
-# + `all_of()` funksjon for å tillate oppramsing av en vektor av kolonnenavn i `select()`
-# + `any_of()` funksjon for å tillate oppramsing av en vektor av kolonnenavn i `select()`, men her får man ikke feilmelding dersom ikke alle variablene finnes i datasettet
+# + `all_of()` funksjon for å tillate oppramsing av kolonnenavn i en vektor i `select()`
+# + `any_of()` tilsvarende som `all_of()`, men her får man ikke feilmelding dersom ikke alle variablene finnes i datasettet
 
 befolkning_per_fylke %>%
   select(fylkesnummer, personer)
@@ -57,7 +55,7 @@ befolkning_per_fylke %>%
 
 # ### Filtrering av rader (`filter`)
 #
-# + `filter()`: beholder eller fjerner rader etter betingelser på en eller flere kolonner (TRUE/FALSE). Det er mulig å kombinere flere betingelser med `&` (og) eller `|` (eller). Se liste over vanlige betaingelser tidligere i kursmateriellet (under Boolske verdier)
+# + `filter()`: beholder eller fjerner rader etter betingelser på én eller flere kolonner (`TRUE`/`FALSE`). Det er mulig å kombinere flere betingelser med `&` (og) eller `|` (eller). Se liste over vanlige betaingelser tidligere i kursmateriellet (under "Boolske verdier")
 
 befolkning_per_fylke %>%
   filter(fylkesnummer == "03")
@@ -116,8 +114,8 @@ befolkning_per_fylke
 
 # ### Aggregering og gruppering av data (`group_by` og `summarise`)
 #
-# + `group_by()`: funksjon for å gruppere et datasett etter en eller flere variabler. Denne brukes i kombinasjon med f.eks. summarise for å gjøre beregninger per undergrupper i et datasett.
-# + `summarise()`: funksjon for å gjøre en eller flere beregninger på et datasett. Uten `group_by()` blir redultatet for hele datasettet, mens med `group_by()` blir resultatene gruppert. Funksjoner som kan brukes i `summarise()` er bl.a. `sum()`, `mean()`, `median()`, `min()` og `max()`
+# + `group_by()`: funksjon for å gruppere et datasett etter én eller flere variabler. Denne brukes i kombinasjon med f.eks. summarise for å gjøre beregninger per undergrupper i et datasett.
+# + `summarise()`: funksjon for å gjøre én eller flere beregninger på et datasett. Uten `group_by()` blir resultatet for hele datasettet, mens med `group_by()` blir resultatene gruppert etter valgte variabler. Funksjoner som kan brukes i `summarise()` er bl.a. `sum()`, `mean()`, `median()`, `min()` og `max()`
 # + `slice_min()`: : hent ut minimumsverdi på en variabel (per gruppe)
 # + `slice_max()`: hent ut maksimumsverdi på en variabel (per gruppe)
 

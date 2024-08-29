@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
-# # Grunnkurs i R
-
 # ## Introduksjon til R og RStudio
 
 # ### Hva er R?
-# R er et statistisk programmeringsspråk som brukes for dataanalyse, statistisk modellering og grafikk. Det er et kraftig verktøy for datavitenskap og maskinlæring, med en stor mengde tilgjengelige pakker og et aktivt fellesskap.
+# R er et statistisk programmeringsspråk som kan brukes til dataanalyse, statistisk modellering og grafikk. Det er et kraftig verktøy for datavitenskap og maskinlæring, med en stor mengde tilgjengelige pakker og et aktivt fellesskap.
 #
 # ### Hva er RStudio?
 # RStudio er et integrert utviklingsmiljø (IDE) for R. Det gir et brukervennlig grensesnitt for å skrive, kjøre og feilsøke R-kode. RStudio består av flere komponenter:
@@ -57,8 +55,10 @@
 
 # Dette må du gjøre hver gang du starter en ny R-sesjon
 library(tidyverse)  
+# -
 
-# +
-# suppressPackageStartupMessages({
-# library(tidyverse)
-#     })
+# For å unngå å få opp oppstartsmeldinger når du laster inn pakker kan man bruke funksjonen `suppressPackageStartupMessages()`:
+
+suppressPackageStartupMessages({
+library(tidyverse)
+    })

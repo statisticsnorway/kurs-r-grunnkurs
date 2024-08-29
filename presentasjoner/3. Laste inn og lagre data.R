@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-# # Grunnkurs i R
-
 # ## Laste inn og lagre data
 #
-# Det er mulig å laste inn data fra mange forskjellige formater i R. I dette kurset skal vi se på noen av de vanligste formatene som brukes i SSB: Excel-filer (.csv og .xlsx), SAS-filer (.sas7bdat) og Parquet-filer (.parquet).
+# Det er mulig å laste inn data fra mange forskjellige kilder og formater i R. I dette kurset skal vi se på noen av de vanligste formatene som brukes i SSB: Excel-filer (.csv og .xlsx), SAS-filer (.sas7bdat) og Parquet-filer (.parquet).
 #
-# > Når vi bruker GitHub til å lagre og dele systemene våre er det viktig å passe på at sensitive data ikke legges på GitHub. Generelt skal ikke data legges på GitHub, men for å kunne lese data i dette kurset er det lagt ut noen ikke sensitive datafiler.
+# > Når vi bruker GitHub til å lagre og dele systemene våre er det viktig å passe på at sensitive data ikke legges på GitHub. Generelt skal ikke data legges på GitHub, men for å kunne lese data i dette kurset er det lagt ut noen filer som ikke inneholder sensitive data.
 #
 # Når man leser inn data i R lagres disse som objekter som gis et valgfritt navn. Disse objektene brukes videre i databehandling uten at den opprinnelige filen som ble lest inn blir endret. For å skrive de ferdig behandlede dataene tilbake til en fil gjøres dette eksplisitt med egne funksjoner.  
 
@@ -14,7 +12,7 @@ setwd("./presentasjoner")
 
 # ### CSV
 #
-# CSV-filer (Comma Separated Values) er en type tekstfil som brukes til å lagre tabulære data, som oftest fra regneark eller databaser. Hver linje i filen representerer en rad i tabellen, og verdiene i hver rad er adskilt med et komma (eller noen ganger et annet skilletegn som semikolon eller tabulator). Den første linjen i en CSV-fil inneholder ofte kolonnenavnene.
+# CSV-filer (Comma Separated Values) er en type tekstfil som brukes til å lagre tabulære data, som oftest fra regneark eller databaser. Hver linje i filen representerer en rad i tabellen, og verdiene i hver rad er adskilt med et komma (eller noen ganger et annet skilletegn som semikolon eller tabulator). Den første linjen i en CSV-fil inneholder ofte kolonnenavnene. De viktigste egenskapene man må vite om filen man leser inn er hvilken separator som brukes, hvilket desimaltegn som brukes og hvilket tegnsett (encoding) som brukes. 
 #
 # + `read.csv()`: funksjon som leser inn CSV-filer som en data frame
 # + `write.csv2()`: brukes til å lagre en data frame til en semikolonseparart CSV-fil
@@ -25,9 +23,6 @@ kommunedata <- read.csv("../data/kommunedata.csv", sep = ",")
 
 # +
 # write.csv2(kommunedata, "../data/kommunedata_ny.csv", row.names = FALSE)
-
-# +
-# ?readr::read_csv
 # -
 
 # ### XLSX
