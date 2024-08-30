@@ -126,7 +126,8 @@ if (5 < 2){
 
 # ### Lim objekter sammen til en karakterstreng
 #
-# + `paste0()`: funksjonen `paste0()` i R brukes til å lime sammen (konkatenerere) tekststrenger uten mellomrom mellom dem. Funksjonen `paste()` limer sammen karakterstrenger og legger automatisk til mellomrom. `paste0()` kan være nyttige for å f.eks. lage filstier som ikke har hardkodet hvilken årgang filen tilhører. 
+# + `paste0()`: brukes til å lime sammen (konkatenerere) tekststrenger uten mellomrom mellom dem. Funksjonen `paste()` limer sammen karakterstrenger og legger automatisk til mellomrom. `paste0()` kan være nyttige for å f.eks. lage filstier som ikke har hardkodet hvilken årgang filen tilhører. 
+# + `glue()`: kan også brukes til å lime sammen tekststrenger og ligner mer på måten dette gjøres i Python. Fordelen med glue er at du kan bruke {} for å referere til variabler direkte inne i strengen, noe som gjør koden mer lesbar og enklere å vedlikeholde enn hvis du brukte tradisjonell strengkonkatenasjon.
 
 # +
 navn <- "Svenn"
@@ -135,6 +136,8 @@ alder <- 45
 paste0("Svenn er ", 45, " år")
 paste0(navn, " er ", alder, " år")
 paste(navn, "er", alder, "år")
+
+glue::glue("{navn} er {alder} år")
 # -
 
 aargang <- 2024

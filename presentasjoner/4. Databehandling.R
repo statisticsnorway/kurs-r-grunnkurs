@@ -148,6 +148,8 @@ befolkning_per_fylke_2 %>%
 
 # ### Koble og binde sammen data
 #
+# Når man kobler sammen to datasett må disse kobles etter en eller flere koblingsnøkler (kolonner). Disse spesifiseres i argumentet `by =` og det er mulig å oppgi en vektor med flere kolonnenavn. Koblingsnøklene bør ha samme navn i begge datasettene når man kobler, men det er mulig å koble ulike kolonnenavn ved å oppgi begge, f.eks. `c("navn_datasett1" = "navn_datasett2")`
+#
 # + `left_join()`: kobling der alle observasjoner fra "venstre" datasett beholdes
 # + `right_join()`: kobling der alle observasjoner fra "høyre" datasett beholdes
 # + `full_join()`: kobling der alle observasjoner fra "venstre" og "høyre" datasett beholdes

@@ -88,14 +88,14 @@ befolkning_per_fylke_2 <- befolkning_per_fylke_sum %>%
 head(befolkning_per_fylke_2)
 # -
 
-# Last inn filen `"../data/fylkesinndeling.csv"` med funksjonen `read.csv2()` og print ut den første raden og kolonnenavnene i filen. Gjør deretter det samme, men legg til argumentet `header = FALSE` i funksjonen `read.csv2()`. Hva blir forskjellen?
+# Last inn filen `"../data/fylkesinndeling.csv"` med funksjonen `read.csv2()` og print ut den første raden og kolonnenavnene i filen (filen er lagret med encoding "latin1"). Gjør deretter det samme, men legg til argumentet `header = FALSE` i funksjonen `read.csv2()`. Hva blir forskjellen?
 
 # +
-fylkesinndeling <- read.csv2("../data/fylkesinndeling.csv", sep = ";", header = FALSE)
+fylkesinndeling <- read.csv2("../data/fylkesinndeling.csv", sep = ";", header = FALSE, encoding = "latin1")
 fylkesinndeling[1,]
 colnames(fylkesinndeling)
 
-fylkesinndeling <- read.csv2("../data/fylkesinndeling.csv", sep = ";", header = TRUE)
+fylkesinndeling <- read.csv2("../data/fylkesinndeling.csv", sep = ";", header = TRUE, encoding = "latin1")
 fylkesinndeling[1,]
 colnames(fylkesinndeling)
 # -

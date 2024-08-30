@@ -18,14 +18,14 @@ fylkesinndeling <- klassR::GetKlass(104, date = paste0(aargang, "-01-01")) %>%
   select(fylkesnummer, fylkesnavn)
 
 # write.csv2(fylkesinndeling, paste0(mappe, "fylkesinndeling.csv"), row.names = FALSE, header = FALSE)
-write.table(fylkesinndeling, paste0(mappe, "fylkesinndeling.csv"), sep = ";", row.names = FALSE, col.names = FALSE, dec = ",")
+write.table(fylkesinndeling, paste0(mappe, "fylkesinndeling.csv"), sep = ";", row.names = FALSE, col.names = FALSE, dec = ",", fileEncoding = "latin1")
 
-kommuneinndeling <- klassR::GetKlass(131, date =  paste0(aargang, "-01-01")) %>%
-  rename(kommunenummer = code, 
-         kommunenavn = name) %>%
-  select(kommunenummer, kommunenavn)
+# kommuneinndeling <- klassR::GetKlass(131, date =  paste0(aargang, "-01-01")) %>%
+#   rename(kommunenummer = code, 
+#          kommunenavn = name) %>%
+#   select(kommunenummer, kommunenavn)
 
-write.csv(kommuneinndeling, paste0(mappe, "kommuneinndeling.csv"), row.names = FALSE)
+# write.csv2(kommuneinndeling, paste0(mappe, "kommuneinndeling.csv"), row.names = FALSE, fileEncoding = "latin1")
 # -
 
 openxlsx::write.xlsx(fylkesinndeling, file = paste0(mappe, "fylkesinndeling.xlsx"),
