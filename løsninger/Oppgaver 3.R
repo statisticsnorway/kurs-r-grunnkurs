@@ -98,7 +98,7 @@ fylkesinndeling[1,]
 colnames(fylkesinndeling)
 # -
 
-# ## Last inn filen "../data/fylkesinndeling.csv" og kall objektet `fylkesinndeling`. Endre navn på kolonnen `V1`gg til `fylkesnummer` og legg til ledende null med funksjonen `str_pad()`
+# ## Last inn filen "../data/fylkesinndeling.csv" og kall objektet `fylkesinndeling`. Endre navn på kolonnen `V1` til `fylkesnummer` og legg til ledende null med funksjonen `str_pad()`
 
 # +
 fylkesinndeling <- read.csv("../data/fylkesinndeling.csv", sep = ";", header = FALSE) %>%
