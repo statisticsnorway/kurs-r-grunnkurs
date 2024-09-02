@@ -146,9 +146,9 @@ karakter_vektor[2]
 "Anne" %in% karakter_vektor
 
 # ### Data Frames
-# En data frame er en tabellstruktur som kan inneholde kolonner med forskjellige typer data. Det er en av de mest brukte datastrukturene i R for å håndtere datasett.
+# En data frame er en tabellstruktur som kan inneholde kolonner med forskjellige typer data. Det er en av de mest brukte datastrukturene i R for å håndtere datasett. Hver kolonne i en data frame er en vektor og kan derfor kun inneholde data av samme objekttype. De ulike kolonnene kan derimot inneholde forskjellige objekttyper.
 #
-# Hver kolonne i en data frame er en vektor og kan derfor kun inneholde data av samme objekttype. De ulike kolonnene kan derimot inneholde forskjellige objekttyper.
+# + `data.frame()`: funksjonen tar én eller flere argumenter som kan være vektorer, faktorer, eller andre data frames. Hvert argument blir en kolonne i data framen, og alle kolonnene må ha samme lengde.
 
 # +
 data <- data.frame(
@@ -187,6 +187,8 @@ data[2,]
 data[,1]
 
 # #### Få oversikt over dataene (deskriptiv statistikk)
+#
+# + `summary()`: funksjon som gir en rask oversikt over viktige statistiske mål for ulike typer R-objekter, som data frames, vektorer, faktorer, og modeller.
 
 # +
 summary(data)
