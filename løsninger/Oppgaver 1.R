@@ -1,209 +1,141 @@
 # -*- coding: utf-8 -*-
-# # Grunnkurs i R
+# # Oppgaver 1
 
-# ## Oppgaver 1
+# Mål
+# + Få en oversikt over RStudio
+# + Å lage et skript på egenhånd, lagre det og gjøre seg kjent med basefunksjoner i R
 
-# Hent inn pakken `tidyverse` som skal brukes i oppgavene med funksjonen `library()`
+# ## Åpne RStudio. Hva er konsollen og hva er miljøvinduet? Bruk  konsollen som kalkulator og gjør noen regnestykker. 
 
-library(tidyverse)
 
-# Hva er produktet av 4499 og 35?
 
-4499*35
+# ## I konsollen: definer objektet `mitt_tall` hvor du lagrer yndlingstallet ditt. Hva skjer i miljøvinduet når du gjør dette? 
 
-# Lag et objekt `teller` som inneholder den numeriske verdien 10 og et objekt `nevner` som inneholder den numeriske verdien 15. Bruk disse objektene til beregne andelen i prosent og lagre resultatet i objektet `andel`.
 
-# +
-teller <- 10
-nevner <- 15
 
-andel <- teller/nevner*100
-andel
-# -
+# ## Skriv `mitt_tall` i konsollen. Hva skjer?
 
-# Bruk objektet `andel` og rund av til én desimal med funksjonen `round()`.
 
-round(andel, digits = 1)
 
-# Bruk objektet `andel` og rund av til null desimaler med funksjonen `round()` og gjør deretter om til et heltall med funksjonen `as.integer()`. Se om resultatet blir ulikt om du kun endrer variabeltypen til heltall uten å avrunde først.  
+# ## Definer et annet objekt (finn på navnet selv) og gjør noen regnestykker med de to objektene du nå har definert.
 
-as.integer(round(andel, digits = 0))
-as.integer(andel)
 
-# Lag et objekt med navnet ditt (karakter) og et objekt med alderen din (numerisk) og skriv det ut i konsollen. Kall objektene for `navn` og `alder`
 
-# +
-navn <- "Sindre"
-navn
+# ## Definer et tredje objekt som summen av de to første objektene, 
 
-alder <- 30
-alder
-# -
 
-# Bruk funksjonen `nchar()` for å se hvor mange bokstaver navnet ditt innholder
 
-nchar(navn)
+# ## Trykk på feiekosten i miljøvinduet. Hva skjer? 
 
-# Bruk funksjonen `substr()` for å hente ut den andre bokstaven i navnet ditt.
 
-substr(navn, 2, 2)
 
-# Bruk funksjonen `substr()` for å hente ut de to første bokstavene i navnet ditt.
+# ## Skriv `mitt_tall` i konsollen nå. Hva skjer?  
 
-substr(navn, 1, 2)
 
-# Bruk funksjonen `substr()` for å hente ut det første sifferet i `alder` og lagre resultatet i et nytt objekt som heter `alder_1`.
 
-alder_1 <- substr(alder, 1, 1)
-alder_1
+# ## Opprett et nytt R skript fra nedtrekksmenyen. 
 
-# Lag en kode som øker verdien til objektet `alder` med 1 hver gang koden kjøres. Hint: bruk funksjonen `class()` til å sjekke variabeltypen til `alder_1`.
 
-alder_1 <- as.numeric(alder_1)+1
-alder_1
 
-# Bruk funksjonen `paste()` til å lime sammen objektene `navn` og `alder` til en setning (f.eks. "NAVN er ALDER år gammel"). Prøv deretter å endre fra funksjonen `paste()` til `paste0()` og se hvordan setningen endrer seg. Juster koden slik at den blir lik som den første. 
+# ## I skriptet definerer du de samme objektene som i oppgavene 2-4 (`mitt_tall` + egendefinert objekt). Kjør skriptet. Hva skjer? 
 
-# +
-paste(navn, "er", alder, "år gammel")
-paste0(navn, "er", alder, "år gammel")
 
-paste0(navn, " er ", alder, " år gammel")
-# -
-# Opprett følgende objekter:
-# - Sett `navn` til en kort tekst som forklarer innholdet i et datasett.
-# - Sett `aargang` til et valgfritt år.
-# - Sett `versjon` til et helt tall.
-#  
-# Ifølge den nye navnestandarden på Dapla, skal en fil være på følgende form:
-#  
-# > `flygende_objekter_p2019_v1.parquet`
-#  
-# Sett sammen `navn`, `aargang` og `versjon` og sett resultatet til `filnavn`, slik at filnavnet stemmer med navnestandarden.
 
-# +
-navn <- "flygende_objekter"
-aargang <- 2019
-versjon <- 2
+# ## Lagre skriptet som `my_first_Rskript.R` eller noe lignende. 
 
-paste0(navn, "_p", aargang, "_v", versjon, ".parquet")
-# -
 
-# Lag objektet `aargang` og erstatt alle årstall i denne filstien med verdien fra `aargang`: 
-#
-# > `/data/prosjekt/2023/årsrapport_2023/backup_2023_rapport.csv`
-#
-# Lagre filstien i objektet `filsti`. Sjekk at filstien blir oppdatert riktig når du endrer årstallet i `aargang` og kjører koden på nytt.
 
-# +
-aargang <- 2023
+# ## Lukk skriptet, trykk på feiekosten i miljøvinduet. Kall på de definerte objektene i konsolen. Hva skjer?  
 
-filsti <- paste0("/data/prosjekt/", aargang, "/årsrapport_", aargang, "/backup_", aargang, "_rapport.csv")
-filsti
-# -
 
-# Bruk funksjonen `gsub()` til å erstatte endelsen ".csv" med ".parquet" i objektet `filsti`
 
-gsub(".csv", ".parquet", filsti)
+# ## Åpne skriptet du nettopp lagde og kjør det på nytt.
 
-# Norske kommunenummer er firesifrede på formen FFKK, der FF er fylkesnummeret og KK er et løpenummer innenfor fylket.
-#  
-# Lag et objekt `kommunenummer` med et valgfritt kommunenummer og bruk R til å hente ut det korresponderende fylkesnummeret `fylkesnummer` til kommunen. Print ut en passende tekst som inneholder `kommunenummer` og `fylkesnummer`. Oppdater `kommunenummer` med ulike kommunenumre og sjekk at koden din stemmer.
 
-# +
-kommunenummer <- "0301"
-fylkesnummer <- substr(kommunenummer, 1, 2)
 
-paste0("Kommunen ", kommunenummer, " ligger i fylke ", fylkesnummer)
-# -
+# ## Definer et objekt med fire desimaler.
 
-# Bruk funksjonen `str_pad()` til å omgjøre `kommunenummer` og `fylkesnummer` til å bestå av 8 tegn. Fyll inn med 0.
 
-stringr::str_pad(kommunenummer, width = 8, "right", pad = "0")
-stringr::str_pad(fylkesnummer, width = 8, "right", pad = "0")
 
-# Bruk funksjonen `str_extract()` for å hente kommunenummeret fra denne tekststrengen: "Oslo har kommunenummer 0301"
+# ## Bruk funksjonen `round()` til å runde av dette objektet til ingen, én og to desimaler
 
-stringr::str_extract("Oslo har kommunenummer 0301", "[0-9]+")
 
-# Gjør det samme som i forrige oppgave, men lag en test om strengen inneholder tall (TRUE/FALSE)
 
-stringr::str_detect("Oslo har kommunenummer 0301", "[0-9]+")
+# ## Hva skjer hvis du skriver og kjører `3 > 2` i scriptet? Hva med `3 == 2`? Og `3 < 2`?  Hvilken type objekt har disse? (`class()`)
 
-# Lag en karaktervektor som heter `handleliste` som inneholder de fem elementene: Banan, Eple, Melk, Brød og Tannpasta
 
-handleliste <- c("Banan", "Eple", "Melk", "Brød", "Tannpasta")
 
-# Lag en test for å sjekke hvor mange elementer som finnes i `handleliste`
+# ## Hva skjer hvis du skriver `3 = 2`?
 
-length(handleliste)
 
-# Hent ut det tredje elementet i `handleliste`.
 
-handleliste[3]
+# ## Lagre et objekt som er en vektor med tre tall. 
 
-# Lag en test for å sjekke om "Melk" finnes i `handleliste`.
 
-"Melk" %in% handleliste
 
-# Omgjør `handleliste` til en data frame og hent ut den fjerde raden.
+# ## Hent det tredje elementet i vektorene. 
 
-data.frame(handleliste)[4,]
 
-# Lag en heltallsvariabel som heter `aar` og sett den til et fødselsår. Lag en if-setning som sjekker om fødselsåret er før 1990. Lag en passende tekst som skrives til skjerm med `print()` dersom kritteriet er oppfylt. Test at logikken stemmer med ulike verdier for `aar`.
 
-# +
-aar <- 1993
+# ## Finn lengden på vektoren ved å bruke funksjonen `length()`
 
-if (aar < 1990){
-  print("Fødselsåret er før 1990")
-}
-# -
 
-# Kopier if-setningen din i cellen under og utvid den med en `else` (dersom betingelsen ikke er oppfylt). Skriv en passende melding til skjerm.
 
-if (aar < 1990){
-  print("Fødselsåret er før 1990")
-} else {
-  print("Fødselsåret er IKKE før 1990")    
-}
+# ## Hva skjer hvis du anvender funksjonen `sum()`  på vektoren? 
 
-# Gjør det samme som i oppgaven over, men endre sjekken for om fødselsåret er på 1990-tallet.
 
-if (aar %in% 1990:1999){
-  print("Fødselsåret er på 1990-tallet")
-} else {
-  print("Fødselsåret er IKKE på 1990-tallet")    
-}
 
-# Lag en ny variabel, `alder`, som er alderen til en person født i `aar` (se bort i fra fødselsdato). Bruk `alder` i en if-setning for å sjekke om en person med dette fødselsåret er myndig eller ikke. Oppdater `aar` med ulike verdier og se at logikken stemmer.
+# ## Opprett en annen vektor, også denne med tre tall. 
 
-# +
-aar <- 2007
 
-alder <- 2024-aar
 
-if (alder >= 18){
-  print("Myndig")
-} else {
-  print("Ikke myndig")
-}
-# -
+# ## Gjør noen regneoperasjoner med vektorene. Hva skjer? 
 
-# Lag et objekt med et årstall som heter `aargang` og bruk funksjonen `paste0()` til å lage en filsti til en mappe der du har filer med flere årganger. Dersom du ikke har et eget egnet eksempel lager du en fiktiv filsti. Endre årstallet og se at filstien oppdaterer seg riktig. Prøv gjerne også å lese inn filen som filstien peker til. 
 
-aargang <- 2024
-filsti <- paste0("C:/Data/Prosjekt/Aargang_", aargang, "/resultater.csv")
-filsti
 
-# Lag din egen data frame ved å bruke det du har lært om vektorer. Lag deg en miniversjon med fiktive data av et datasett du jobber med. Pass på at det er like mange elementer i hver vektor/kolonne.
-#
-# Eksempel:
+# ## Definer en vektor med fire tall. Hva skjer hvis du prøver å legge sammen vektoren med fire tall med en av de vektorene med tre tall?
 
-# +
-data <- data.frame(AARGANG = 2024,
-                   KOMMUNE = c('0301', '0301', '0301', '5001', '4601'),
-                   SYKEHUS = c('Ullevål', 'Rikshospitalet', 'Aker', 'St. Olavs', 'Haukeland'),
-                   PLASS = c(120, 150, 89, 41, 64))
 
-summary(data)
+
+# ## Kombiner de to vektorene til én vektor
+
+
+
+# ## Opprett vektoren `statsminister` med koden nedenfor. Bruk deretter funksjonene `class()`, `length()`, `unique()` og `table()` på dette objektet. Hva forteller disse? 
+
+statsminister <- c("Brundtland", "Willoch", "Brundtland", "Syse", "Brundtland", "Jagland", "Bondevik", "Stoltenberg", "Bondevik", "Stoltenberg", "Solberg","Støre")
+
+# ## Hva forteller denne? `length(unique())` 
+
+
+
+# ## Definer en vektor som heter `vektor` med seks tall du velger. Hva gjør koden `vektor > 5`? 
+
+vektor <- 1:6
+vektor_sjekk <- vektor > 5
+
+# ## Ofte kan det være lurt å gjøre om logisk til tall. F.eks. 1*(vektor_sjekk). Hva forteller sum(1*vektor_sjekk) deg?
+
+1*(vektor_sjekk)
+sum(1*(vektor_sjekk))
+
+# ## Sjekk om Vedum har vært statsminister ved å bruke `%in%` 
+
+
+
+# ## Tell antall statsminister-perioder Gro Harlem Brundtland hadde ved sum(1*...)
+
+sum(1*(statsminister == "Brundtland"))
+
+# ## Sett sammen vektorene `parti ` og `kvinne` til en data.frame og gi denne et passende navn.
+
+parti <- c("AP","H","Ap", "H","Ap","Ap","Krf","Ap","KrF","Ap","H","Ap")
+kvinne <- c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,FALSE)
+
+# ## Print ut, sjekk hvordan ser ut (kan bruke `View()` også). Hvordan ser du hva slags objekttype de ulike kolonnene er? 
+
+
+
+# ## Hent ut kolonnene fra data framen ved hjelp av `$`. Bruk funksjonene `nrow()` og `ncol()` for å telle antall rader og kolonner i datasettet.
+
+

@@ -12,7 +12,7 @@ setwd("./presentasjoner")
 
 # ### CSV
 #
-# CSV-filer (Comma Separated Values) er en type tekstfil som brukes til å lagre tabulære data, som oftest fra regneark eller databaser. Hver linje i filen representerer en rad i tabellen, og verdiene i hver rad er adskilt med et komma (eller noen ganger et annet skilletegn som semikolon eller tabulator). Den første linjen i en CSV-fil inneholder ofte kolonnenavnene. De viktigste egenskapene man må vite om filen man leser inn er hvilken separator som brukes (`;`, `,`), hvilket desimaltegn som brukes (`,`, `.`) og hvilket tegnsett (encoding) som brukes (`UTF-8`, `latin1`). 
+# CSV-filer (Comma Separated Values) er en type tekstfil som brukes til å lagre tabulære data, som oftest fra regneark eller databaser. Hver linje i filen representerer en rad i tabellen, og verdiene i hver rad er adskilt med et komma (eller noen ganger et annet skilletegn som semikolon eller tabulator). Den første linjen i en CSV-fil inneholder ofte kolonnenavnene. De viktigste egenskapene man må vite om filen man leser inn er hvilken separator som brukes (f.eks. `;`, `,`), hvilket desimaltegn som brukes (f.eks. `,`, `.`) og hvilket tegnsett (encoding) som brukes (f.eks. `UTF-8`, `latin1`). 
 #
 # + `read.csv()`: funksjon som leser inn CSV-filer som en data frame
 # + `write.csv2()`: brukes til å lagre en data frame til en semikolonseparart CSV-fil
