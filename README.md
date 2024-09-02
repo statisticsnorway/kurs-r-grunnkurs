@@ -3,12 +3,13 @@
 Dette repoet (_repository_) inneholder kursmateriale for SSBs grunnkurs i R. Materialet er en del av et kurs holdt for interne brukere ved SSB.
 Det inneholder eksempelkode og øvingsdatasett, øvelser og løsninger for kurset som holdes i to økter over to dager.
 
-Innhold
+Presentasjoner
 1. Introduksjon til R og RStudio
 2. Grunnleggende konsepter i R
 3. Laste inn og lagre data
 4. Databehandling
 
+## Forberedelese til kurset
 
 #### Klone kurs-repo
 
