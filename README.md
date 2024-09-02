@@ -4,10 +4,10 @@ Dette repoet (_repository_) inneholder kursmateriale for SSBs grunnkurs i R. Mat
 Det inneholder eksempelkode og øvingsdatasett, øvelser og løsninger for kurset som holdes i to økter over to dager.
 
 Presentasjoner
-1. Introduksjon til R og RStudio
-2. Grunnleggende konsepter i R
-3. Laste inn og lagre data
-4. Databehandling
+- [1. Introduksjon til R og RStudio](presentasjoner/1.%20Introduksjon%20til%20R%20og%20RStudio.pdf)
+- [2. Grunnleggende konsepter i R](presentasjoner/2.%20Grunnleggende%20konsepter%20i%20R.pdf)
+- [3. Laste inn og lagre data](presentasjoner/3.%20Laste%20inn%20og%20lagre%20data.pdf)
+- [4. Databehandling](presentasjoner/4.%20Databehandling.pdf)
 
 ## Forberedelese til kurset
 
