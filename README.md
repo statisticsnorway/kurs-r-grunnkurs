@@ -1,17 +1,26 @@
-# SSBs foundation course in R
-This repository contains course material for SSBs introductory course in R. The material is part of a course held for internal users at SSB. 
-It contains example code and practice datasets, exercises and solutions for the course held in two sessions over two days. 
+# Grunnkurs i R
 
-For SSB workers, videos of the online course are availble for watching on Stream with links below
+Dette repoet (_repository_) inneholder kursmateriale for SSBs grunnkurs i R. Materialet er en del av et kurs holdt for interne brukere ved SSB.
+Det inneholder eksempelkode og øvingsdatasett, øvelser og løsninger for kurset som holdes i to økter over to dager.
 
-Part 1: **Introduction to R**
-What is R and why do we use it in SSB? How do we start R and what is an object and a vector? [Introduction to R](https://web.microsoftstream.com/video/8846dced-ca77-449a-a927-b36c4caa53cb)
+Presentasjoner
+1. Introduksjon til R og RStudio
+2. Grunnleggende konsepter i R
+3. Laste inn og lagre data
+4. Databehandling
 
-Part 2: **Reading in data**
-Data can come in a whole range of formats. In this part we show a few methods for reading in data such as SAS datasets, from csv and from Statbank tables. [Video on reading in data to R](https://web.microsoftstream.com/video/a0a48bc0-fa74-48a0-bd2d-c587f67a24da)
+## Forberedelese til kurset
 
-Part 3: **Data handling**
-Perhaps the most time consuming part of data analysis is getting the data into the right form. Here we use tidyverse to create and format variables, filter and group data and create summary statistics. [Video on data handling](https://web.microsoftstream.com/video/76b2d938-d316-4de9-b378-8154f192e98b)
+#### Klone kurs-repo
 
-Part 4: **Visualizing data**
-Here we describe how to join datasets together and visuslaize the results. We create figures with the tidyverse function ggplot. [Video on Visualizing data](https://web.microsoftstream.com/video/3a01c023-2653-4e3d-9455-4303d59a0280)
+Kursmateriell ligger i dette repoet (_repository_), som er på SSBs Github-område. I repoet finner du mange eksempler og kode som du kan kjøre underveis i kurset og se på senere. Øvelsene og oppgavene til kurset ligger også i kurs-repoet. 
+
+For å få mest nytte av kurset kan du klone repoet i RStudio i produksjonssonen. Du starter RStudio (server) ved å klikke på snarveien "RStudio Server" som ligger på skrivebordet i produksjonssonen. Deretter kan du følge [instruks om å klone et repo i RStudio her](github.md).
+
+#### Jupyter på bakken
+
+Vi vil bruke R i Jupyterlab i produksjonssonen, også kjent som "on-prem" eller "Jupyter på bakken". Dette er tilgjengelig for alle via en desktop-snarvei i produksjonssonen. Vi anbefaler at du tester dette ut litt på forhånd hvis du ikke er kjent med miljøet.
+
+#### RStudio server
+
+Vi vil også bruke SSBs nye RStudio Server løsning i produksjonssonen. Dette er i likhet med Jupyterlab en browser-basert løsning og kan startes ved desktop-snarvei i produksjonssonen. Bruk vanlige initialer og passord for å logge på.
