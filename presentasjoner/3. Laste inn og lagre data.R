@@ -7,8 +7,26 @@
 #
 # Når man leser inn data i R lagres disse som objekter som gis et valgfritt navn. Disse objektene brukes videre i databehandling uten at den opprinnelige filen som ble lest inn blir endret. For å skrive de ferdig behandlede dataene tilbake til en fil gjøres dette eksplisitt med egne funksjoner.  
 
+# #### Working directory
+#
+# Et working directory i R refererer til den gjeldende mappen eller katalogen der R vil se etter filer, og der R vil lagre filer som standard når du kjører kommandoer som leser fra eller skriver til filer. Det er med andre ord den "arbeidsmappen" som R bruker som utgangspunkt for filoperasjoner. Hvis working directory er satt til "/Users/bruker/prosjekt", og du vil lese en CSV-fil som heter data.csv, kan du bare skrive "data.csv" når du skal oppgi filstien.
+#
+# + `getwd()`: se hvilken mappe som er satt som gjeldende working directory
+# + `setwd()`: hvis du ønsker å endre til en annen mappe, kan du bruke `setwd()` og oppgi stien til den ønskede mappen
+
 getwd()
-setwd("./presentasjoner")
+setwd("./presentasjoner") # kjør kun i RStudio, i Jupyter er dette allerede working directory
+
+# Her settes working directory til mappen presentasjoner som ligger i Github-repoet til kursmateriellet. Dette er for å gjøre de relative filstiene som brukes nedenfor like når man jobber i Jupyterlab eller RStudio. En relativ filsti refererer til en fil eller mappe i forhold til det nåværende working directory i R (eller andre programmer). Den beskriver hvordan du kommer til en fil fra det nåværende stedet du jobber (working directory), i stedet for å gi den fulle stien fra roten av filsystemet.
+#
+# + `.` (punktum): Representerer den nåværende mappen (working directory).
+# + `..` (to punktum): Representerer mappen over den nåværende mappen, altså en mappe "høyere opp" i hierarkiet.
+
+# #### Filstier
+#
+# Fullstendig filsti er den komplette banen fra roten av filsystemet til en fil. Når du bruker en fullstendig sti, spiller det ingen rolle hvilket working directory du har satt – du spesifiserer den eksakte plasseringen av filen på datamaskinen din. Bruk fullstendige stier hvis du arbeider med filer på forskjellige steder i filsystemet, eller hvis du ønsker å være helt sikker på hvor filene er lagret, uavhengig av hva working directory er satt til.
+#
+# > I SSB har vi kun tilgang på data som ligger på Linux fra Jupyterlab og RStudio i produksjonssonen. Et eksempel på en fullstendig filsti på Linux er: `/ssb/bruker/felles/fredagskoding/T07459.sas7bdat` 
 
 # ### CSV
 #
@@ -17,13 +35,13 @@ setwd("./presentasjoner")
 # + `read.csv()`: funksjon som leser inn CSV-filer som en data frame
 # + `write.csv2()`: brukes til å lagre en data frame til en semikolonseparart CSV-fil
 
+?read.csv
+
 sykemelding <- read.csv("../data/sykemelding.csv", sep = ";", dec = ",", encoding = "UTF-8")
 
 kommunedata <- read.csv("../data/kommunedata.csv", sep = ",")
 
-# +
-# write.csv2(kommunedata, "../data/kommunedata_ny.csv", row.names = FALSE)
-# -
+write.csv2(kommunedata, "../data/kommunedata_ny.csv", row.names = FALSE)
 
 # ### XLSX
 #

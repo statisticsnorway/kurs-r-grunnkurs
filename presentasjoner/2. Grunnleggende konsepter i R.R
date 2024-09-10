@@ -85,6 +85,8 @@ class(karakter_objekt)
 # + `<`: er det mindre enn?
 # + `<=`: der det mindre enn eller lik?
 # + `%in%`: er det lik én av flere verdier?
+# + `is.na()`: er det missing (NA)?
+# + `!is.na()`: er det ikke missing (NA)?
 
 "Kongsvinger" == "Kongsvinger" # test for likhet
 
@@ -137,7 +139,7 @@ length(karakter_vektor)
 
 karakter_vektor[2]
 
-# #### Test for innhhold i en vektor
+# #### Test for innhold i en vektor
 #
 # For å sjekke om en gitt verdi finnes i en vektor med flere elementer brukes tegnet `%in%`. Resultatet blir en boolsk verdi (`TRUE` eller `FALSE`) om verdien man har oppgitt finnes i vektoren.
 
@@ -189,19 +191,24 @@ data[,1]
 # #### Få oversikt over dataene (deskriptiv statistikk)
 #
 # + `summary()`: funksjon som gir en rask oversikt over viktige statistiske mål for ulike typer R-objekter, som data frames, vektorer, faktorer, og modeller.
+# + `glimpse()`: gir en horisontal visning av datasettet, som viser kolonnenavn, datatyper, og en rask forhåndsvisning av dataene (de første få verdiene). Denne visningen er mer kompakt og gjør det enkelt å få en rask oversikt over strukturen på datasettet, spesielt når du har mange kolonner.
+# + `describe()`: Gir en mer omfattende beskrivelse av variablene enn `summary()`. Den inkluderer flere statistiske mål, spesielt for numeriske og kategoriske data (viser frekvensen og prosentandelen av hver kategori). Viser også informasjon om hvor mange observasjoner som mangler (NA), noe som er viktig for datarensing og forståelse av datakvaliteten.
 
 # +
 summary(data)
 summary(data$alder)
 
+data$alder
+ 
 nrow(data)
 ncol(data)
 dim(data)
 
 colnames(data)
+# +
+# tibble::glimpse(data)
+# Hmisc::describe(data)
 # -
-pillar::glimpse(data)
-Hmisc::describe(data)
 
 
 summary(data$alder)

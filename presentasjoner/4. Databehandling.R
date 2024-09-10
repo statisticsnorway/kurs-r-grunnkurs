@@ -13,7 +13,6 @@ library(tidyverse)
 
 befolkning_per_fylke <- arrow::read_parquet("../data/befolkning_per_fylke.parquet")
 
-# +
 colnames(befolkning_per_fylke)
 
 befolkning_per_fylke %>%
@@ -24,7 +23,6 @@ befolkning_per_fylke <- befolkning_per_fylke %>%
   rename_all(tolower) %>%
   rename(fylkesnummer = region,
          personer = value)
-# -
 
 # ### Selektering av kolonner (`select`)
 #
@@ -38,9 +36,10 @@ befolkning_per_fylke %>%
 befolkning_per_fylke %>%
   select(-tid)
 
-# +
 kolonner <- c("fylkesnummer", "personer")
+kolonner
 
+# +
 befolkning_per_fylke <- befolkning_per_fylke %>%
   select(all_of(kolonner))
 
@@ -57,8 +56,10 @@ befolkning_per_fylke %>%
 #
 # + `filter()`: beholder eller fjerner rader etter betingelser på én eller flere kolonner (`TRUE`/`FALSE`). Det er mulig å kombinere flere betingelser med `&` (og) eller `|` (eller). Se liste over vanlige betaingelser tidligere i kursmateriellet (under "Boolske verdier")
 
-befolkning_per_fylke %>%
+oslo <- befolkning_per_fylke %>%
   filter(fylkesnummer == "03")
+
+oslo
 
 befolkning_per_fylke %>%
   filter(fylkesnummer %in% c("03", "34"))
@@ -71,8 +72,10 @@ befolkning_per_fylke %>%
 
 # For å filtrere rader med missing-verdier (NA) kan man bruke funksjonen `is.na()`. F.eks. `filter(is.na(variabel))` for å beholde kun rader med missing eller `filter(!is.na(variabel))` for å fjerne alle rader med missing.
 
+befolkning_per_fylke
+
 befolkning_per_fylke %>%
-  filter(is.na(personer))
+  filter(is.na(personer) | is.na(fylkesnummer))
 
 # +
 befolkning_per_fylke <- befolkning_per_fylke %>%
@@ -84,7 +87,7 @@ befolkning_per_fylke
 # ### Lage nye eller endre eksisterende variabler (`mutate`)
 #
 # + `mutate()`: opprett ny variabel (ved å oppgi et kolonnenavn som ikke finnes fra før) eller endre en eksisterende variabel (ved å oppgi et kolonnenavn som finnes fra før)
-# + `case_when()`: brukes til å lage nye variabler basert på flere betingelser. Den fungerer som en slags if-else-konstruksjon, der du kan spesifisere flere betingelser (vilkår), og hva som skal skje hvis hver av dem er sanne. Tegnet `~` (tilde) brukes for å skille mellom en betingelse og verdien som skal returneres hvis betingelsen er sann.
+# + `case_when()`: brukes til å lage nye variabler basert på flere betingelser (inne i funksjonen `mutate()`). Den fungerer som en slags if-else-konstruksjon, der du kan spesifisere flere betingelser (vilkår), og hva som skal skje hvis hver av dem er sanne. Tegnet `~` (tilde) brukes for å skille mellom en betingelse og verdien som skal returneres hvis betingelsen er sann.
 
 befolkning_per_fylke <- befolkning_per_fylke %>%
   mutate(aargang = 2024)
@@ -93,6 +96,9 @@ befolkning_per_fylke %>%
   mutate(aargang = 2024, 
          tall = 1, 
          aargang_t1 = aargang-tall) 
+
+case_when(2023 == 2024 ~ "Året er 2024", 
+          TRUE ~ "Året er ikke 2024")
 
 befolkning_per_fylke %>%
   mutate(size = case_when(personer < 500000 ~ "Under 500 000 personer", 
@@ -192,6 +198,7 @@ befolkning_per_kjonn_fylke <- arrow::read_parquet("../data/befolkning_per_kjonn_
 
 head(befolkning_per_kjonn_fylke)
 
+# +
 befolkning_per_kjonn_fylke_wide <- befolkning_per_kjonn_fylke %>%
   pivot_wider(id_cols  = "Region", 
               names_from = "Kjonn", 
