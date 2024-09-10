@@ -47,7 +47,7 @@
 #
 # Tidyverse er en samling av R-pakker som er designet for å jobbe sammen og gjøre dataanalyse enklere, mer konsistent og mer lesbar. Disse pakkene følger en felles designfilosofi og deler en lignende syntaks, noe som gjør det lettere å lære og bruke dem sammen.
 #
-# Når du installerer og laster inn Tidyverse-pakken, får du tilgang til en rekke andre kraftige pakker som er svært nyttige for datamanipulering, visualisering, importering, og mer. Vi vil se nærmere på funksjoner fra Tidyverse senere i kurset.
+# Når du installerer og laster inn Tidyverse-pakken, får du tilgang til en rekke andre kraftige pakker som er svært nyttige for datamanipulering, visualisering, importering, og mer. Vi vil se nærmere på funksjoner fra Tidyverse senere i kurset (under "Databehandling").
 
 # +
 # Gjør dette bare én gang dersom pakken ikke er installert
