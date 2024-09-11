@@ -45,7 +45,7 @@
 
 
 
-# ## Lag en kode som øker verdien til objektet `alder` med 1 hver gang koden kjøres. Hint: bruk sjekk variabeltypen til `alder_1`.
+# ## Lag en kode som øker verdien til objektet `alder_1` med 1 hver gang koden kjøres. Hint: sjekk variabeltypen til `alder_1`.
 
 
 

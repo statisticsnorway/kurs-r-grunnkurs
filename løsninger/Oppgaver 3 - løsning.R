@@ -23,13 +23,13 @@ pillar::glimpse(befolkning_per_kommune)
 # glimpse(befolkning_per_kommune)
 summary(befolkning_per_kommune)
 
-# ## Bruk funksjonen `rename()`til å endre navnet på kolonnen Region til kommunenummer og value til personer.
+# ## Bruk funksjonen `rename()`til å endre navnet på kolonnene `Region` til `kommunenummer` og `value` til `personer`.
 
 befolkning_per_kommune <- befolkning_per_kommune %>%
   rename(kommunenummer = Region, 
          personer = value)
 
-# ## Bruk funksjonen `select()` til å fjerne variabelen Tid og endre rekkefølgen på kolonnene slik: `kommunenummer`, `kommunenavn`, `personer`.
+# ## Bruk funksjonen `select()` til å fjerne variabelen `Tid` og endre rekkefølgen på kolonnene slik: `kommunenummer`, `kommunenavn`, `personer`.
 
 # +
 befolkning_per_kommune <- befolkning_per_kommune %>%

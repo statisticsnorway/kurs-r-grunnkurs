@@ -6,14 +6,14 @@
 #
 # + `Numeriske verdier`: representerer tall, enten heltall (`integer`) eller flyttall (`double`). F.eks. 4 og -2.5
 # + `Karakterverdier`: representerer tekststrenger (`character`). Disse er omgitt av enten enkle eller doble anførselstegn. F.eks. "Dette er en tekst" og 'R er nyttig'.
-# + `Boolske verdier`: representerer sannhetsverdier (`logical`). Det er kun to mulige verdier: TRUE eller FALSE.
+# + `Boolske verdier`: representerer sannhetsverdier (`logical`). Det er kun to mulige verdier: `TRUE` eller `FALSE`.
 #
 # Et objekt opprettes ved å gi det et navn (f.eks. `numerisk_objekt`) etterfulgt av en pil (`<-`). Innholdet man ønsker å lagre i objektet kommer etter pilen. Det er imidlertid noen regler og forbehold for navngivning av objekter i R:
 #
 # + Kan kun inneholde bokstaver, tall, understrek og punktum
 # + Må starte starte med en bokstav eller et punktum
 # + Skiller mellom store og små bokstaver
-# + Unngå reserverte ord (f.eks. `TRUE`/`FALSE` og navn på funksjoner)
+# + Unngå reserverte ord (f.eks. `TRUE`/`FALSE`/`NA` og navn på funksjoner)
 
 # #### Numeriske verdier
 #
@@ -85,6 +85,8 @@ class(karakter_objekt)
 # + `<`: er det mindre enn?
 # + `<=`: der det mindre enn eller lik?
 # + `%in%`: er det lik én av flere verdier?
+# + `is.na()`: er det missing (NA)?
+# + `!is.na()`: er det ikke missing (NA)?
 
 "Kongsvinger" == "Kongsvinger" # test for likhet
 
@@ -112,7 +114,7 @@ as.integer(1.5) # OBS: avrunder ikke, beholder kun sifrene før desimaltegnet
 
 # ### Vektorer
 #
-# En vektor er en samling av elementer av samme objekttype og kan bl.a. være numerisk, karakter eller logisk. De er grunnleggende dataobjekter i R og kan opprettes ved hjelp av funksjonen `c()`. Elementene i vektoren ramses opp inne i parentesen og separeres med komma.
+# En vektor er en samling av elementer av samme objekttype og kan bl.a. være numerisk, karakter eller logisk. De er grunnleggende dataobjekter i R og kan opprettes ved hjelp av funksjonen `c()`. Elementene i vektoren ramses opp inne i parentesen og separeres med komma. 
 
 numerisk_vektor <- c(28, 34, 22:25)
 class(numerisk_vektor)
@@ -137,7 +139,7 @@ length(karakter_vektor)
 
 karakter_vektor[2]
 
-# #### Test for innhhold i en vektor
+# #### Test for innhold i en vektor
 #
 # For å sjekke om en gitt verdi finnes i en vektor med flere elementer brukes tegnet `%in%`. Resultatet blir en boolsk verdi (`TRUE` eller `FALSE`) om verdien man har oppgitt finnes i vektoren.
 
@@ -161,7 +163,7 @@ class(data)
 data
 # -
 
-# For å hente ut en enkelt kolonne fra en data frame som en vektor skriver man først navnet på datasettet etterfulgt av et dollartegn (`$`) og så navnet på kolonnen:
+# For å hente ut én enkelt kolonne fra en data frame som en vektor skriver man først navnet på datasettet etterfulgt av et dollartegn (`$`) og så navnet på kolonnen:
 
 data$navn
 data$alder
@@ -189,22 +191,20 @@ data[,1]
 # #### Få oversikt over dataene (deskriptiv statistikk)
 #
 # + `summary()`: funksjon som gir en rask oversikt over viktige statistiske mål for ulike typer R-objekter, som data frames, vektorer, faktorer, og modeller.
+# + `glimpse()`: gir en horisontal visning av datasettet, som viser kolonnenavn, datatyper, og en rask forhåndsvisning av dataene (de første få verdiene). Denne visningen er mer kompakt og gjør det enkelt å få en rask oversikt over strukturen på datasettet, spesielt når du har mange kolonner.
+# + `describe()`: Gir en mer omfattende beskrivelse av variablene enn `summary()`. Den inkluderer flere statistiske mål, spesielt for numeriske og kategoriske data (viser frekvensen og prosentandelen av hver kategori). Viser også informasjon om hvor mange observasjoner som mangler (NA), noe som er viktig for datarensing og forståelse av datakvaliteten.
 
-# +
 summary(data)
 summary(data$alder)
+data$alder
 
 nrow(data)
 ncol(data)
 dim(data)
 
 colnames(data)
-# -
-pillar::glimpse(data)
+tibble::glimpse(data)
 Hmisc::describe(data)
-
-
-summary(data$alder)
 
 
 # ### Strengbehandling
@@ -212,7 +212,7 @@ summary(data$alder)
 # #### Lim objekter sammen til en karakterstreng
 #
 # + `paste0()`: brukes til å lime sammen (konkatenerere) tekststrenger uten mellomrom mellom dem. Funksjonen `paste()` limer sammen karakterstrenger og legger automatisk til mellomrom. `paste0()` kan være nyttige for å f.eks. lage filstier som ikke har hardkodet hvilken årgang filen tilhører. 
-# + `glue()`: kan også brukes til å lime sammen tekststrenger og ligner mer på måten dette gjøres i Python. Fordelen med glue er at du kan bruke {} for å referere til variabler direkte inne i strengen, noe som gjør koden mer lesbar og enklere å vedlikeholde enn hvis du brukte tradisjonell strengkonkatenasjon.
+# + `glue()`: kan også brukes til å lime sammen tekststrenger og ligner mer på måten dette gjøres i Python. Fordelen med glue er at du kan bruke `{}` for å referere til variabler direkte inne i strengen, noe som gjør koden mer lesbar og enklere å vedlikeholde enn hvis du brukte tradisjonell strengkonkatenasjon.
 
 # +
 navn <- "Svenn"
@@ -245,8 +245,8 @@ substr(2024, 3, 4)
 
 # +
 kommunenummer <- 0301
-
 kommunenummer
+
 stringr::str_pad(kommunenummer, width = 4, "left", pad = "0")
 # -
 
@@ -266,7 +266,7 @@ ny_tekst
 #
 # + `str_extract()`: brukes til å trekke ut deler av en streng som matcher et gitt mønster (regulært uttrykk, eller regex). Returnerer kun den første matchen for det regulære uttrykket i hver streng.
 # + `str_extract_all()`: returnerer alle matchene for det regulære uttrykket i hver streng.
-# + `str_detect()`: gir TRUE/FALSE om mønsteret finnes i strengen
+# + `str_detect()`: gir `TRUE`/`FALSE` om mønsteret finnes i strengen
 
 # +
 tekst <- "Min adresse er 1234 Eksempelgata 123"
@@ -287,9 +287,8 @@ ny_tekst
 # +
 aargang <- 2023
 
-# Betingelsen i parentes
-if (aargang == 2023){
-  print("Kjør denne koden for 2023-årgangen") # Koden som kjøres dersom betingelsen er TRUE
+if (aargang == 2023){ # Betingelsen i parentes
+  print("Kjør denne koden for 2023-årgangen") # Koden som kjøres dersom betingelsen er TRUE (inne i klammeparentes)
 }
 # -
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # ## Databehandling
 #
-# Det er mange forskjellige pakker og tilnærminger til databehandling i R. I dette kurset vil vi ha et spesielt fokus på Tidyverse. Tidyverse er bygget på prinsippet om "tidy data", hvor hver variabel danner en kolonne, hver observasjon/enhet danner en rad, og hver celle i datasettet inneholder en enkelt verdi.
+# Det er mange forskjellige pakker og tilnærminger til databehandling i R. I dette kurset vil vi ha et spesielt fokus på `tidyverse`. Tidyverse er bygget på prinsippet om "tidy data", hvor hver variabel danner en kolonne, hver observasjon/enhet danner en rad, og hver celle i datasettet inneholder en enkelt verdi.
 #
 # > `%>%` er en "pipe"-operator i Tidyverse som brukes til å kjede sammen funksjoner på en lesbar måte. Den lar deg sende resultatet av en funksjon som input til neste funksjon uten å måtte lagre midlertidige variabler eller lage innfløkte nestede funksjonskall. Dette gjør koden mer lesbar og lettere å forstå.
 
@@ -13,7 +13,6 @@ library(tidyverse)
 
 befolkning_per_fylke <- arrow::read_parquet("../data/befolkning_per_fylke.parquet")
 
-# +
 colnames(befolkning_per_fylke)
 
 befolkning_per_fylke %>%
@@ -24,13 +23,12 @@ befolkning_per_fylke <- befolkning_per_fylke %>%
   rename_all(tolower) %>%
   rename(fylkesnummer = region,
          personer = value)
-# -
 
 # ### Selektering av kolonner (`select`)
 #
 # + `select()`: funksjon for å selektere ønskede variabler. Om man heller ønsker å kun oppgi hvilke variabler som skal utelates settes tegnet `-` foran kolonnenavnet
-# + `all_of()` funksjon for å tillate oppramsing av kolonnenavn i en vektor i `select()`
-# + `any_of()` tilsvarende som `all_of()`, men her får man ikke feilmelding dersom ikke alle variablene finnes i datasettet
+# + `all_of()`: funksjon for å tillate oppramsing av kolonnenavn i en vektor i `select()`
+# + `any_of()`: tilsvarende som `all_of()`, men her får man ikke feilmelding dersom ikke alle variablene finnes i datasettet
 
 befolkning_per_fylke %>%
   select(fylkesnummer, personer)
@@ -38,9 +36,10 @@ befolkning_per_fylke %>%
 befolkning_per_fylke %>%
   select(-tid)
 
-# +
 kolonner <- c("fylkesnummer", "personer")
+kolonner
 
+# +
 befolkning_per_fylke <- befolkning_per_fylke %>%
   select(all_of(kolonner))
 
@@ -55,9 +54,9 @@ befolkning_per_fylke %>%
 
 # ### Filtrering av rader (`filter`)
 #
-# + `filter()`: beholder eller fjerner rader etter betingelser på én eller flere kolonner (`TRUE`/`FALSE`). Det er mulig å kombinere flere betingelser med `&` (og) eller `|` (eller). Se liste over vanlige betaingelser tidligere i kursmateriellet (under "Boolske verdier")
+# + `filter()`: beholder eller fjerner rader etter betingelser på én eller flere kolonner (`TRUE`/`FALSE`). Det er mulig å kombinere flere betingelser med `&` (og) eller `|` (eller). Se liste over vanlige betingelser tidligere i kursmateriellet (under "Boolske verdier")
 
-befolkning_per_fylke %>%
+oslo <- befolkning_per_fylke %>%
   filter(fylkesnummer == "03")
 
 befolkning_per_fylke %>%
@@ -69,22 +68,18 @@ befolkning_per_fylke %>%
 befolkning_per_fylke %>%
   filter(fylkesnummer != "03" & personer > 500000)
 
-# For å filtrere rader med missing-verdier (NA) kan man bruke funksjonen `is.na()`. F.eks. `filter(is.na(variabel))` for å beholde kun rader med missing eller `filter(!is.na(variabel))` for å fjerne alle rader med missing.
+# For å filtrere rader med missing-verdier (`NA`) kan man bruke funksjonen `is.na()`. F.eks. `filter(is.na(variabel))` for å beholde kun rader med missing eller `filter(!is.na(variabel))` for å fjerne alle rader med missing.
 
 befolkning_per_fylke %>%
-  filter(is.na(personer))
+  filter(is.na(personer) | is.na(fylkesnummer))
 
-# +
 befolkning_per_fylke <- befolkning_per_fylke %>%
   filter(!is.na(personer))
 
-befolkning_per_fylke
-# -
-
 # ### Lage nye eller endre eksisterende variabler (`mutate`)
 #
-# + `mutate()`: opprett ny variabel (ved å oppgi et kolonnenavn som ikke finnes fra før) eller endre en eksisterende variabel (ved å oppgi et kolonnenavn som finnes fra før)
-# + `case_when()`: brukes til å lage nye variabler basert på flere betingelser. Den fungerer som en slags if-else-konstruksjon, der du kan spesifisere flere betingelser (vilkår), og hva som skal skje hvis hver av dem er sanne. Tegnet `~` (tilde) brukes for å skille mellom en betingelse og verdien som skal returneres hvis betingelsen er sann.
+# + `mutate()`: opprett ny variabel (ved å oppgi et kolonnenavn som ikke finnes fra før) eller endre en eksisterende variabel (ved å oppgi et kolonnenavn som finnes fra før). Det er mulig å kombinere den med andre funksjoner for å transformere eller analysere dataene dine samtidig som du oppretter nye variabler.
+# + `case_when()`: brukes inne i funksjonen `mutate()` til å lage nye variabler basert på flere betingelser. Den fungerer som en slags `if-else`-konstruksjon, der du kan spesifisere flere betingelser (vilkår), og hva som skal skje hvis hver av dem er sanne. Tegnet `~` (tilde) brukes for å skille mellom en betingelse og verdien som skal returneres hvis betingelsen er sann.
 
 befolkning_per_fylke <- befolkning_per_fylke %>%
   mutate(aargang = 2024)
@@ -94,9 +89,12 @@ befolkning_per_fylke %>%
          tall = 1, 
          aargang_t1 = aargang-tall) 
 
+case_when(2024 == 2024 ~ "Året er 2024", 
+          TRUE ~ "Året er ikke 2024")
+
 befolkning_per_fylke %>%
-  mutate(size = case_when(personer < 500000 ~ "Under 500 000 personer", 
-                          personer >= 500000 ~ "Over 500 000 personer"))
+  mutate(size = case_when(personer < 500000 ~ "Lavere enn 500 000 personer", 
+                          personer >= 500000 ~ "Høyere enn eller lik 500 000 personer"))
 
 # +
 befolkning_per_fylke <- befolkning_per_fylke %>%
@@ -114,29 +112,27 @@ befolkning_per_fylke
 
 # ### Aggregering og gruppering av data (`group_by` og `summarise`)
 #
-# + `group_by()`: funksjon for å gruppere et datasett etter én eller flere variabler. Denne brukes i kombinasjon med f.eks. summarise for å gjøre beregninger per undergrupper i et datasett.
+# + `group_by()`: funksjon for å gruppere et datasett etter én eller flere variabler. Denne brukes i kombinasjon med f.eks. `summarise()` for å gjøre beregninger per undergrupper i et datasett.
 # + `summarise()`: funksjon for å gjøre én eller flere beregninger på et datasett. Uten `group_by()` blir resultatet for hele datasettet, mens med `group_by()` blir resultatene gruppert etter valgte variabler. Funksjoner som kan brukes i `summarise()` er bl.a. `sum()`, `mean()`, `median()`, `min()` og `max()`
 # + `slice_min()`: : hent ut minimumsverdi på en variabel (per gruppe)
 # + `slice_max()`: hent ut maksimumsverdi på en variabel (per gruppe)
+# + `arrange()` brukes til å sortere data etter en eller flere kolonner, og kan kombineres med `group_by()` hvis du ønsker å sortere innen hver gruppe.
+# + `ungroup()`: Etter at du har brukt `group_by()`, kan det noen ganger være nødvendig å "frigjøre" dataene fra grupperingen ved å bruke `ungroup()` for å fortsette analysen uten gruppeinndeling.
 
-# +
 befolkning_per_landsdel <- befolkning_per_fylke %>%
   group_by(landsdel) %>%
-  summarise(personer = sum(personer)) 
-
-befolkning_per_landsdel
-# -
+  summarise(personer_sum = sum(personer)) 
 
 befolkning_per_fylke %>%
   group_by(landsdel) %>%
   summarise(personer_sum = sum(personer), 
-            personer_mean = mean(personer)) 
+            personer_mean = mean(personer))
 
 # ### Dublettsjekk
 #
-# + `tally()`: tell opp antall observasjoner i hver gruppe. 
+# + `tally()`: tell opp antall observasjoner i hver gruppe
+# + `count()`: er en kombinasjon av `group_by()` og `tally()`.
 
-# +
 befolkning_per_fylke_2 <- befolkning_per_fylke %>%
   add_row(befolkning_per_fylke[1,]) # Legger til dublett
 
@@ -144,11 +140,12 @@ befolkning_per_fylke_2 %>%
   group_by(fylkesnummer, aargang) %>%
   tally() %>%
   filter(n > 1)
-# -
+
+# > Dersom du har dubletter i dataene dine anbefales det å prøve å finne ut hvordan disse har oppstått og enten fjerne de tidligere i prosessen eller bruke logiske filtre for å fjerne disse. Det er mulig å bruke funksjonen `distinct()` med argumentet `.keep_all = TRUE` for å kun beholde unike verdier etter valgte grupperingsvariabler, men her kan det være tilfeldig hvilke verdier som fjernes per gruppe. Bruk derfor denne kun om du vil fjerne helt identiske verdier (der det ikke spiller noen rolle hvilken av dublettene som fjernes)
 
 # ### Koble og binde sammen data
 #
-# Når man kobler sammen to datasett må disse kobles etter en eller flere koblingsnøkler (kolonner). Disse spesifiseres i argumentet `by =` og det er mulig å oppgi en vektor med flere kolonnenavn. Koblingsnøklene bør ha samme navn i begge datasettene når man kobler, men det er mulig å koble ulike kolonnenavn ved å oppgi begge, f.eks. `c("navn_datasett1" = "navn_datasett2")`
+# Når man kobler sammen to datasett må disse kobles etter én eller flere koblingsnøkler (kolonner). Disse spesifiseres i argumentet `by =` og det er mulig å oppgi en vektor med flere kolonnenavn (f.eks. `c("variabel1", "variabel2")`). Koblingsnøklene bør ha samme navn i begge datasettene når man kobler, men det er mulig å koble ulike kolonnenavn ved å oppgi begge, f.eks. `c("variabel1_datasett1" = "variabel1_datasett2")`
 #
 # + `left_join()`: kobling der alle observasjoner fra "venstre" datasett beholdes
 # + `right_join()`: kobling der alle observasjoner fra "høyre" datasett beholdes
@@ -163,6 +160,9 @@ befolkning_per_fylke %>%
 
 befolkning_per_fylke %>%
   right_join(fylkesinndeling, by = "fylkesnummer")
+
+befolkning_per_fylke %>%
+  full_join(fylkesinndeling, by = "fylkesnummer") 
 
 befolkning_per_fylke %>%
   full_join(fylkesinndeling, by = "fylkesnummer") %>%
@@ -192,6 +192,7 @@ befolkning_per_kjonn_fylke <- arrow::read_parquet("../data/befolkning_per_kjonn_
 
 head(befolkning_per_kjonn_fylke)
 
+# +
 befolkning_per_kjonn_fylke_wide <- befolkning_per_kjonn_fylke %>%
   pivot_wider(id_cols  = "Region", 
               names_from = "Kjonn", 

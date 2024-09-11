@@ -20,10 +20,10 @@ fylkesinndeling <- klassR::GetKlass(104, date = paste0(aargang, "-01-01")) %>%
 # write.csv2(fylkesinndeling, paste0(mappe, "fylkesinndeling.csv"), row.names = FALSE, header = FALSE)
 write.table(fylkesinndeling, paste0(mappe, "fylkesinndeling.csv"), sep = ";", row.names = FALSE, col.names = FALSE, dec = ",", fileEncoding = "latin1")
 
-# kommuneinndeling <- klassR::GetKlass(131, date =  paste0(aargang, "-01-01")) %>%
-#   rename(kommunenummer = code, 
-#          kommunenavn = name) %>%
-#   select(kommunenummer, kommunenavn)
+kommuneinndeling <- klassR::GetKlass(131, date =  paste0(aargang, "-01-01")) %>%
+  rename(kommunenummer = code, 
+         kommunenavn = name) %>%
+  select(kommunenummer, kommunenavn)
 
 # write.csv2(kommuneinndeling, paste0(mappe, "kommuneinndeling.csv"), row.names = FALSE, fileEncoding = "latin1")
 # -
@@ -88,6 +88,13 @@ befolkning_per_kommune <- befolkning %>%
 arrow::write_parquet(befolkning_per_kommune, paste0(mappe, "befolkning_per_kommune.parquet"))
 
 # +
+
+openxlsx::write.xlsx(befolkning_per_kommune, file = paste0(mappe, "befolkning_per_kommune.xlsx"),
+                    rowNames = FALSE,
+                    showNA = FALSE,
+                    overwrite=T)
+
+# +
 befolkning_per_kjonn_fylke <- befolkning %>%
   filter(nchar(Region) == 2) %>%
   # mutate(Alder_num = as.numeric(Alder)) %>%
@@ -102,3 +109,6 @@ befolkning_per_kjonn_fylke <- befolkning %>%
 # befolkning_per_kjonn_fylke
 
 arrow::write_parquet(befolkning_per_kjonn_fylke, paste0(mappe, "befolkning_per_kjonn_fylke.parquet"))
+# -
+
+
