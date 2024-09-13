@@ -80,12 +80,15 @@ arrow::write_parquet(befolkning_per_fylke_t1, paste0(mappe, "befolkning_per_fylk
 # +
 befolkning_per_kommune <- befolkning %>%
   filter(nchar(Region) == 4) %>%
-  group_by(Region) %>%
+  group_by(Tid, Region) %>%
   summarise(value = sum(value)) %>%
   filter(value > 0) %>%
   left_join(kommuneinndeling, by = c("Region" = "kommunenummer"))
 
 arrow::write_parquet(befolkning_per_kommune, paste0(mappe, "befolkning_per_kommune.parquet"))
+# -
+
+colnames(befolkning_per_kommune)
 
 # +
 
