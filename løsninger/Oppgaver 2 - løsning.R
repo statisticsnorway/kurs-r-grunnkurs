@@ -30,7 +30,7 @@ as.integer(andel)
 navn <- "Sindre"
 navn
 
-alder <- 30
+alder <- 31
 alder
 # -
 
@@ -65,7 +65,7 @@ alder_1
 alder_1 <- as.numeric(alder_1)+1
 alder_1
 
-# ## Bruk funksjonen `paste()` til å lime sammen objektene `navn` og `alder` til en setning (f.eks. "NAVN er ALDER år gammel"). Prøv deretter å endre fra funksjonen `paste()` til `paste0()` og se hvordan setningen endrer seg. Juster koden slik at den blir lik som den første. 
+# ## Bruk funksjonen `paste()` til å lime sammen objektene `navn` og `alder` til en setning (f.eks. "NAVN er ALDER år gammel"). Prøv deretter å endre fra funksjonen `paste()` til `paste0()` og se hvordan setningen endrer seg. Juster koden slik at den blir lik som den første. Lag til slutt den samme setningen med funksjonen `glue::glue()`
 
 # +
 paste(navn, "er", alder, "år gammel")
@@ -82,14 +82,16 @@ paste0(navn, " er ", alder, " år gammel")
 #  
 # > `flygende_objekter_p2019_v1.parquet`
 #  
-# Sett sammen `navn`, `aargang` og `versjon` og sett resultatet til `filnavn`, slik at filnavnet stemmer med navnestandarden.
+# Sett sammen `navn`, `aargang` og `versjon` og sett resultatet til `filnavn`, slik at filnavnet stemmer med navnestandarden. Print deretter innholdet i `filnavn` i konsollen for å kontrollere at det har blitt riktig satt sammen. 
 
 # +
 navn <- "flygende_objekter"
 aargang <- 2019
 versjon <- 2
 
-paste0(navn, "_p", aargang, "_v", versjon, ".parquet")
+filnavn <- paste0(navn, "_p", aargang, "_v", versjon, ".parquet")
+
+print(filnavn)
 # -
 
 # ## Lag objektet `aargang` og erstatt alle årstall i denne filstien med verdien fra `aargang`: 
@@ -101,7 +103,8 @@ paste0(navn, "_p", aargang, "_v", versjon, ".parquet")
 # +
 aargang <- 2023
 
-filsti <- paste0("/data/prosjekt/", aargang, "/årsrapport_", aargang, "/backup_", aargang, "_rapport.csv")
+# filsti <- paste0("/data/prosjekt/", aargang, "/årsrapport_", aargang, "/backup_", aargang, "_rapport.csv")
+filsti <- glue::glue("/data/prosjekt/{aargang}/årsrapport_{aargang}/backup_{aargang}_rapport.csv")
 filsti
 # -
 
@@ -111,21 +114,21 @@ gsub(".csv", ".parquet", filsti)
 
 # ## Norske kommunenummer er firesifrede på formen FFKK, der FF er fylkesnummeret og KK er et løpenummer innenfor fylket.
 #  
-# Lag et objekt `kommunenummer` med et valgfritt kommunenummer og bruk R til å hente ut det korresponderende fylkesnummeret `fylkesnummer` til kommunen. Print ut en passende tekst som inneholder `kommunenummer` og `fylkesnummer`. Oppdater `kommunenummer` med ulike kommunenumre og sjekk at koden din stemmer.
+# Lag et objekt `komm_nr` med et valgfritt [kommunenummer](https://www.ssb.no/klass/klassifikasjoner/131) og bruk R til å hente ut det korresponderende fylkesnummeret `fylke_nr` til kommunen. Print ut en passende tekst som inneholder `komm_nr` og `fylke_nr`. Oppdater `komm_nr` med ulike kommunenumre og sjekk at koden din stemmer.
 
 # +
-kommunenummer <- "0301"
-fylkesnummer <- substr(kommunenummer, 1, 2)
+komm_nr <- "0301"
+fylke_nr <- substr(komm_nr, 1, 2)
 
-paste0("Kommunen ", kommunenummer, " ligger i fylke ", fylkesnummer)
+paste0("Kommunen ", komm_nr, " ligger i fylke ", fylke_nr)
 # -
 
-# ## Bruk funksjonen `str_pad()` til å omgjøre `kommunenummer` og `fylkesnummer` til å bestå av 8 tegn. Fyll inn med 0.
+# ## Bruk funksjonen `stringr::str_pad()` til å omgjøre `komm_nr` og `fylke_nr` til å bestå av 8 tegn. Fyll inn med 0.
 
-stringr::str_pad(kommunenummer, width = 8, "right", pad = "0")
-stringr::str_pad(fylkesnummer, width = 8, "right", pad = "0")
+stringr::str_pad(komm_nr, width = 8, "right", pad = "0")
+stringr::str_pad(fylke_nr, width = 8, "right", pad = "0")
 
-# ## Bruk funksjonen `str_extract()` for å hente kommunenummeret fra denne tekststrengen: "Oslo har kommunenummer 0301"
+# ## Bruk funksjonen `stringr::str_extract()` for å hente kommunenummeret fra denne tekststrengen: "Oslo har kommunenummer 0301"
 
 stringr::str_extract("Oslo har kommunenummer 0301", "[0-9]+")
 
@@ -145,13 +148,13 @@ length(handleliste)
 
 handleliste[3]
 
-# ## Lag en test for å sjekke om "Melk" finnes i `handleliste`.
+# ## Lag en test for å sjekke om "Brød" finnes i `handleliste`.
 
-"Melk" %in% handleliste
+"Brød" %in% handleliste
 
-# ## Omgjør `handleliste` til en data frame og hent ut den fjerde raden.
+# ## Omgjør `handleliste` til en data frame og hent ut den andre raden.
 
-data.frame(handleliste)[4,]
+data.frame(handleliste)[2,]
 
 # ## Lag en heltallsvariabel som heter `aar` og sett den til et fødselsår. Lag en if-setning som sjekker om fødselsåret er før 1990. Lag en passende tekst som skrives til skjerm med `print()` dersom kritteriet er oppfylt. Test at logikken stemmer med ulike verdier for `aar`.
 
@@ -200,13 +203,13 @@ filsti <- paste0("C:/Data/Prosjekt/Aargang_", aargang, "/resultater.csv")
 filsti
 
 # ## Lag din egen data frame ved å bruke det du har lært om vektorer. Lag deg en miniversjon med fiktive data av et datasett du jobber med. Pass på at det er like mange elementer i hver vektor/kolonne.
-#
-# Eksempel:
 
 # +
-data <- data.frame(AARGANG = 2024,
-                   KOMMUNE = c('0301', '0301', '0301', '5001', '4601'),
-                   SYKEHUS = c('Ullevål', 'Rikshospitalet', 'Aker', 'St. Olavs', 'Haukeland'),
-                   PLASS = c(120, 150, 89, 41, 64))
+# Eksempel:
 
-summary(data)
+# data <- data.frame(aargang = 2024,
+#                    komm_nr = c('0301', '0301', '0301', '5001', '4601'),
+#                    sykehus = c('Ullevål', 'Rikshospitalet', 'Aker', 'St. Olavs', 'Haukeland'),
+#                    plass = c(120, 150, 89, 41, 64))
+
+# summary(data)

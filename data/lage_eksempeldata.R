@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # +
-aargang <- 2024
+aargang <- 2025
 
 library(tidyverse)
 
@@ -13,19 +15,19 @@ mappe <- "../data/"
 
 # +
 fylkesinndeling <- klassR::GetKlass(104, date = paste0(aargang, "-01-01")) %>%
-  rename(fylkesnummer = code, 
+  rename(fylke_nr = code, 
          fylkesnavn = name) %>%
-  select(fylkesnummer, fylkesnavn)
+  select(fylke_nr, fylkesnavn)
 
 # write.csv2(fylkesinndeling, paste0(mappe, "fylkesinndeling.csv"), row.names = FALSE, header = FALSE)
 write.table(fylkesinndeling, paste0(mappe, "fylkesinndeling.csv"), sep = ";", row.names = FALSE, col.names = FALSE, dec = ",", fileEncoding = "latin1")
 
 kommuneinndeling <- klassR::GetKlass(131, date =  paste0(aargang, "-01-01")) %>%
-  rename(kommunenummer = code, 
+  rename(komm_nr = code, 
          kommunenavn = name) %>%
-  select(kommunenummer, kommunenavn)
+  select(komm_nr, kommunenavn)
 
-# write.csv2(kommuneinndeling, paste0(mappe, "kommuneinndeling.csv"), row.names = FALSE, fileEncoding = "latin1")
+write.csv2(kommuneinndeling, paste0(mappe, "kommuneinndeling.csv"), row.names = FALSE, fileEncoding = "latin1")
 # -
 
 openxlsx::write.xlsx(fylkesinndeling, file = paste0(mappe, "fylkesinndeling.xlsx"),
@@ -83,7 +85,7 @@ befolkning_per_kommune <- befolkning %>%
   group_by(Region) %>%
   summarise(value = sum(value)) %>%
   filter(value > 0) %>%
-  left_join(kommuneinndeling, by = c("Region" = "kommunenummer"))
+  left_join(kommuneinndeling, by = c("Region" = "komm_nr"))
 
 arrow::write_parquet(befolkning_per_kommune, paste0(mappe, "befolkning_per_kommune.parquet"))
 

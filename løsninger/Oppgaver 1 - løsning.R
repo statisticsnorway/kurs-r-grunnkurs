@@ -21,7 +21,7 @@ nytt_tall <- 2
 mitt_tall+nytt_tall
 # -
 
-# ## Definer et tredje objekt som summen av de to første objektene, 
+# ## Definer et tredje objekt som summen av de to første objektene. 
 
 sum_tall <- mitt_tall+nytt_tall
 
@@ -79,19 +79,19 @@ class(3 > 2)
 # 3 = 2
 # -
 
-# ## Lagre et objekt som er en vektor med tre tall. 
+# ## Definer et objekt (`vektor_tall`) som er en vektor med tre tall. 
 
 vektor_tall <- c(1, 2, 3)
 
-# ## Hent det tredje elementet i vektorene. 
+# ## Hent det tredje elementet i vektoren (`vektor_tall`). 
 
 vektor_tall[3]
 
-# ## Finn lengden på vektoren ved å bruke funksjonen `length()`
+# ## Finn lengden på vektoren (`vektor_tall`) ved å bruke funksjonen `length()`
 
 length(vektor_tall)
 
-# ## Hva skjer hvis du anvender funksjonen `sum()`  på vektoren? 
+# ## Hva skjer hvis du anvender funksjonen `sum()`  på vektoren `vektor_tall`? 
 
 sum(vektor_tall)
 
@@ -99,29 +99,44 @@ sum(vektor_tall)
 
 vektor_tall_2 <- c(4, 5, 6)
 
-# ## Gjør noen regneoperasjoner med vektorene. Hva skjer? 
+# ## Gjør noen regneoperasjoner med vektoren. Hva skjer? 
 
 # +
 vektor_tall_2+1
 vektor_tall_2*2
 
 sum(vektor_tall_2)+1
+
+vektor_tall+vektor_tall_2
 # -
 
-# ## Definer en vektor med fire tall. Hva skjer hvis du prøver å legge sammen vektoren med fire tall med en av de vektorene med tre tall?
+# ## Definer en vektor med fire tall (`vektor_tall_4`). Hva skjer hvis du prøver å summere vektoren med fire tall med en av vektorene med tre tall?
 
+# +
 vektor_tall_4 <- 1:4
-dd
-# vektor_tall_4+vektor_tall_2
 
-# ## Kombiner de to vektorene til én vektor
+# vektor_tall_4+vektor_tall_2
+# -
+
+# ## Kombiner de to vektorer til én vektor (vektor_tall_7). Dvs. slå sammen `vektor_tall` og `vektor_tall_4` slik at du får én vektor med length() = 7.
 
 c(vektor_tall_2, vektor_tall_4)
 
 # ## Opprett vektoren `statsminister` med koden nedenfor. Bruk deretter funksjonene `class()`, `length()`, `unique()` og `table()` på dette objektet. Hva forteller disse? 
 
 # +
-statsminister <- c("Brundtland", "Willoch", "Brundtland", "Syse", "Brundtland", "Jagland", "Bondevik", "Stoltenberg", "Bondevik", "Stoltenberg", "Solberg", "Støre")
+statsminister <- c("Brundtland", 
+                   "Willoch", 
+                   "Brundtland", 
+                   "Syse", 
+                   "Brundtland", 
+                   "Jagland", 
+                   "Bondevik", 
+                   "Stoltenberg", 
+                   "Bondevik", 
+                   "Stoltenberg", 
+                   "Solberg", 
+                   "Støre")
 
 class(statsminister)
 length(statsminister)
@@ -133,7 +148,7 @@ table(statsminister)
 
 length(unique(statsminister))
 
-# ## Definer en vektor som heter `vektor` med seks tall du velger. Hva gjør koden `vektor > 5`? 
+# ## Definer en vektor som heter `vektor` med seks tall du velger. Hva gjør koden `vektor > 5`? Lagre resultatet i et objekt som du kaller `vektor_sjekk`
 
 vektor <- 1:6
 vektor_sjekk <- vektor > 5
