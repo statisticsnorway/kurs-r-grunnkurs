@@ -13,14 +13,10 @@ Presentasjoner
 
 #### Klone kurs-repo
 
-Kursmateriell ligger i dette repoet (_repository_), som er på SSBs Github-område. I repoet finner du mange eksempler og kode som du kan kjøre underveis i kurset og se på senere. Øvelsene og oppgavene til kurset ligger også i kurs-repoet. 
+Kursmateriell ligger i dette repoet (_repository_), som er på SSBs Github-område. I repo-et finner du mange eksempler og kode som du kan kjøre underveis i kurset og se på senere. Øvelsene og oppgavene til kurset ligger også i kurs-repoet.
 
-For å få mest nytte av kurset kan du klone repoet i RStudio i produksjonssonen. Du starter RStudio (server) ved å klikke på snarveien "RStudio Server" som ligger på skrivebordet i produksjonssonen. Deretter kan du følge [instruks om å klone et repo i RStudio her](github.md).
+For å få mest nytte av kurset kan du klone repoet i RStudio. Du starter RStudio Server i [Dapla Lab](https://lab.dapla.ssb.no/) ved å klikke på «My Services» -> «New Service» -> «Rstudio». Deretter kan du legge til lenken til repo-et under fanen «Git/GitHub» før oppstart.
 
-#### Jupyter på bakken
+#### Dapla Lab
 
-Vi vil bruke R i Jupyterlab i produksjonssonen, også kjent som "on-prem" eller "Jupyter på bakken". Dette er tilgjengelig for alle via en desktop-snarvei i produksjonssonen. Vi anbefaler at du tester dette ut litt på forhånd hvis du ikke er kjent med miljøet.
-
-#### RStudio server
-
-Vi vil også bruke SSBs nye RStudio Server løsning i produksjonssonen. Dette er i likhet med Jupyterlab en browser-basert løsning og kan startes ved desktop-snarvei i produksjonssonen. Bruk vanlige initialer og passord for å logge på.
+Vi vil bruke R i RStudio Server og Jupyterlab i Dapla Lab i kurset. Vi anbefaler at du tester dette ut litt på forhånd hvis du ikke er kjent med miljøet. 

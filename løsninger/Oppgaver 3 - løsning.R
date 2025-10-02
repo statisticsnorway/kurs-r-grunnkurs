@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # # Oppgaver 3
 
+renv::autoload()
+
 # ## Hent inn pakken `tidyverse` som skal brukes i oppgavene med funksjonen `library()`
 
 library(tidyverse)
@@ -210,7 +212,7 @@ befolking_per_aldersgrupper <- bind_rows(befolkning_2_hele_landet, befolkning_2_
 # ## Lagre objektet `befolking_per_aldersgrupper` i mappen "../data/" i .csv-format og les deretter inn filen for å kontrollere at filen ble lagret riktig. Lagre også filen i .xlsx og .parquet-format (og les inn filene etterpå)
 
 # +
-write.csv2(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.csv")
+write.csv2(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.csv", row.names = FALSE)
 
 openxlsx::write.xlsx(befolking_per_aldersgrupper, file = "../data/befolking_per_aldersgrupper.xlsx",
                      rowNames = FALSE,
@@ -218,8 +220,13 @@ openxlsx::write.xlsx(befolking_per_aldersgrupper, file = "../data/befolking_per_
                      overwrite=T)
 
 arrow::write_parquet(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.parquet")
-# -
+# +
+befolkning_per_aldersgrupper_csv <- read.csv2("../data/befolking_per_aldersgrupper.csv")
 
+befolking_per_aldersgrupper_xlsx <- openxlsx::read.xlsx("../data/befolking_per_aldersgrupper.xlsx")
+
+befolking_per_aldersgrupper_parquet <- arrow::read_parquet("../data/befolking_per_aldersgrupper.parquet")
+# -
 
 
 # ## Åpen oppgave: Les inn et datasett du jobber med og bruk funksjonene `rename()`, `select()`, `filter()`, `group_by()`, `summarise()` osv. til å gjøre gjøre oppgaver du vanligvis må løse.

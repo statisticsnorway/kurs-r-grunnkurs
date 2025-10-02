@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # ## Databehandling
 #
 # Det er mange forskjellige pakker og tilnærminger til databehandling i R. I dette kurset vil vi ha et spesielt fokus på `tidyverse`. Tidyverse er bygget på prinsippet om "tidy data", hvor hver variabel danner en kolonne, hver observasjon/enhet danner en rad, og hver celle i datasettet inneholder en enkelt verdi.

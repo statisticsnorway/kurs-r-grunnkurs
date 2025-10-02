@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # ## Grunnleggende konsepter i R
-#
+
 # ### Objekter og objekttyper
 # I R kan nesten alt betraktes som et objekt. Objekter kan inneholde ulike typer data og de vanligste objekttypene inkluderer:
 #

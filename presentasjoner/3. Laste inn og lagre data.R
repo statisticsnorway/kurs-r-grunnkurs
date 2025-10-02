@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # ## Laste inn og lagre data
-#
+
 # Det er mulig å laste inn data fra mange forskjellige kilder og formater i R. I dette kurset skal vi se på noen av de vanligste formatene som brukes i SSB: Excel-filer (`.csv` og `.xlsx`), SAS-filer (`.sas7bdat`) og Parquet-filer (`.parquet`).
 #
 # > OBS: Når vi bruker GitHub til å lagre og dele skriptene våre er det viktig å passe på at sensitive data ikke legges på GitHub. Generelt skal ikke data legges på GitHub, men for å kunne lese data i dette kurset er det lagt ut noen filer som ikke inneholder sensitive data.
@@ -15,7 +17,10 @@
 # + `setwd()`: hvis du ønsker å endre til en annen mappe, kan du bruke `setwd()` og oppgi stien til den ønskede mappen
 
 getwd()
-setwd("./presentasjoner") # kjør kun i RStudio, i Jupyter er dette allerede working directory
+
+if (Sys.getenv("RSTUDIO") == 1){
+   setwd("./presentasjoner") # kjør kun i RStudio, i Jupyter er dette allerede working directory 
+}
 
 # Her settes working directory til mappen `presentasjoner` som ligger i Github-repoet til kursmateriellet. Dette er for å gjøre de relative filstiene som brukes nedenfor like når man jobber i Jupyterlab eller RStudio. En relativ filsti refererer til en fil eller mappe i forhold til nåværende working directory i R. Den beskriver hvordan du kommer til en fil fra det nåværende stedet du jobber (working directory), i stedet for å gi den fulle stien fra roten av filsystemet.
 #
