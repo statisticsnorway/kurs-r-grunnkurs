@@ -53,7 +53,7 @@ mitt_tall
 
 
 
-# ## Definer et objekt med fire desimaler.
+# ## Lag et objekt som inneholder et tall med fire desimaler.
 
 tall_desimaler <- 1.2345
 

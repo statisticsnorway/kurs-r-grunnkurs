@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# # Oppgaver 3
-
 renv::autoload()
+
+# # Oppgaver 3
 
 # ## Hent inn pakken `tidyverse` som skal brukes i oppgavene med funksjonen `library()`
 
@@ -212,20 +212,20 @@ befolking_per_aldersgrupper <- bind_rows(befolkning_2_hele_landet, befolkning_2_
 # ## Lagre objektet `befolking_per_aldersgrupper` i mappen "../data/" i .csv-format og les deretter inn filen for å kontrollere at filen ble lagret riktig. Lagre også filen i .xlsx og .parquet-format (og les inn filene etterpå)
 
 # +
-write.csv2(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.csv", row.names = FALSE)
+# write.csv2(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.csv", row.names = FALSE)
 
-openxlsx::write.xlsx(befolking_per_aldersgrupper, file = "../data/befolking_per_aldersgrupper.xlsx",
-                     rowNames = FALSE,
-                     showNA = FALSE,
-                     overwrite=T)
+# openxlsx::write.xlsx(befolking_per_aldersgrupper, file = "../data/befolking_per_aldersgrupper.xlsx",
+#                      rowNames = FALSE,
+#                      showNA = FALSE,
+#                      overwrite=T)
 
-arrow::write_parquet(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.parquet")
+# arrow::write_parquet(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.parquet")
 # +
-befolkning_per_aldersgrupper_csv <- read.csv2("../data/befolking_per_aldersgrupper.csv")
+# befolkning_per_aldersgrupper_csv <- read.csv2("../data/befolking_per_aldersgrupper.csv")
 
-befolking_per_aldersgrupper_xlsx <- openxlsx::read.xlsx("../data/befolking_per_aldersgrupper.xlsx")
+# befolking_per_aldersgrupper_xlsx <- openxlsx::read.xlsx("../data/befolking_per_aldersgrupper.xlsx")
 
-befolking_per_aldersgrupper_parquet <- arrow::read_parquet("../data/befolking_per_aldersgrupper.parquet")
+# befolking_per_aldersgrupper_parquet <- arrow::read_parquet("../data/befolking_per_aldersgrupper.parquet")
 # -
 
 

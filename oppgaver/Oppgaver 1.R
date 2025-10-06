@@ -17,7 +17,7 @@
 
 
 
-# ## Definer et tredje objekt som summen av de to første objektene, 
+# ## Definer et tredje objekt som summen av de to første objektene. 
 
 
 
@@ -49,7 +49,7 @@
 
 
 
-# ## Definer et objekt med fire desimaler.
+# ## Lag et objekt som inneholder et tall med fire desimaler.
 
 
 
@@ -65,19 +65,19 @@
 
 
 
-# ## Lagre et objekt som er en vektor med tre tall. 
+# ## Definer et objekt (`vektor_tall`) som er en vektor med tre tall. 
 
 
 
-# ## Hent det tredje elementet i vektorene. 
+# ## Hent det tredje elementet i vektoren (`vektor_tall`). 
 
 
 
-# ## Finn lengden på vektoren ved å bruke funksjonen `length()`
+# ## Finn lengden på vektoren (`vektor_tall`) ved å bruke funksjonen `length()`
 
 
 
-# ## Hva skjer hvis du anvender funksjonen `sum()`  på vektoren? 
+# ## Hva skjer hvis du anvender funksjonen `sum()`  på vektoren `vektor_tall`? 
 
 
 
@@ -85,21 +85,32 @@
 
 
 
-# ## Gjør noen regneoperasjoner med vektorene. Hva skjer? 
+# ## Gjør noen regneoperasjoner med vektoren. Hva skjer? 
 
 
 
-# ## Definer en vektor med fire tall. Hva skjer hvis du prøver å legge sammen vektoren med fire tall med en av de vektorene med tre tall?
+# ## Definer en vektor med fire tall (`vektor_tall_4`). Hva skjer hvis du prøver å summere vektoren med fire tall med en av vektorene med tre tall?
 
 
 
-# ## Kombiner de to vektorene til én vektor
+# ## Kombiner de to vektorer til én vektor (vektor_tall_7). Dvs. slå sammen `vektor_tall` og `vektor_tall_4` slik at du får én vektor med length() = 7.
 
 
 
 # ## Opprett vektoren `statsminister` med koden nedenfor. Bruk deretter funksjonene `class()`, `length()`, `unique()` og `table()` på dette objektet. Hva forteller disse? 
 
-statsminister <- c("Brundtland", "Willoch", "Brundtland", "Syse", "Brundtland", "Jagland", "Bondevik", "Stoltenberg", "Bondevik", "Stoltenberg", "Solberg", "Støre")
+statsminister <- c("Brundtland", 
+                   "Willoch", 
+                   "Brundtland", 
+                   "Syse", 
+                   "Brundtland", 
+                   "Jagland", 
+                   "Bondevik", 
+                   "Stoltenberg", 
+                   "Bondevik", 
+                   "Stoltenberg", 
+                   "Solberg", 
+                   "Støre")
 
 
 
@@ -107,7 +118,7 @@ statsminister <- c("Brundtland", "Willoch", "Brundtland", "Syse", "Brundtland", 
 
 
 
-# ## Definer en vektor som heter `vektor` med seks tall du velger. Hva gjør koden `vektor > 5`? 
+# ## Definer en vektor som heter `vektor` med seks tall du velger. Hva gjør koden `vektor > 5`? Lagre resultatet i et objekt som du kaller `vektor_sjekk`
 
 
 

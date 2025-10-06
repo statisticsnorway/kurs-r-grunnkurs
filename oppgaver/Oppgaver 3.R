@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # # Oppgaver 3
 
 # ## Hent inn pakken `tidyverse` som skal brukes i oppgavene med funksjonen `library()`
@@ -21,11 +23,11 @@
 
 
 
-# ## Bruk funksjonen `rename()`til å endre navnet på kolonnen Region til kommunenummer og value til personer.
+# ## Bruk funksjonen `rename()`til å endre navnet på kolonnene `Region` til `komm_nr` og `value` til `personer`.
 
 
 
-# ## Bruk funksjonen `select()` til å fjerne variabelen Tid og endre rekkefølgen på kolonnene slik: `kommunenummer`, `kommunenavn`, `personer`.
+# ## Bruk funksjonen `select()` til å fjerne variabelen `Tid` og endre rekkefølgen på kolonnene slik: `komm_nr`, `kommunenavn`, `personer`.
 
 
 
@@ -33,7 +35,7 @@
 
 
 
-# ## Bruk funksjonen `filter()` for å beholde kommuner med befolkning på lavere enn eller lik 1000. Hvor mange kommnuner blir det?
+# ## Bruk funksjonen `filter()` for å beholde kommuner med befolkning på lavere enn eller lik 1000 personer. Hvor mange kommnuner blir det?
 
 
 
@@ -41,7 +43,7 @@
 
 
 
-# ## Bruk funksjonen `mutate()` til å opprette en ny variabel som heter `fylkesnummer` som inneholder fylkesnummeret til hver kommune. Hint: fylkesnummeret er de to første sifrene i kommunenummeret.
+# ## Bruk funksjonen `mutate()` til å opprette en ny variabel som heter `fylke_nr` som inneholder fylkesnummeret til hver kommune. Hint: fylkesnummeret er de to første sifrene i kommunenummeret.
 
 
 
@@ -57,7 +59,7 @@
 
 
 
-# ## Last inn filen "../data/fylkesinndeling.csv" og kall objektet `fylkesinndeling`. Endre navn på kolonnen `V1` til `fylkesnummer` og legg til ledende null med funksjonen `str_pad()`
+# ## Last inn filen "../data/fylkesinndeling.csv" og kall objektet `fylkesinndeling`. Endre navn på kolonnen `V1` til `fylke_nr` og legg til ledende null med funksjonen `str_pad()`
 
 
 
@@ -99,6 +101,8 @@ befolkning <- PxWebApiData::ApiData(07459,
 
 
 # ## Lagre objektet `befolking_per_aldersgrupper` i mappen "../data/" i .csv-format og les deretter inn filen for å kontrollere at filen ble lagret riktig. Lagre også filen i .xlsx og .parquet-format (og les inn filene etterpå)
+
+
 
 
 

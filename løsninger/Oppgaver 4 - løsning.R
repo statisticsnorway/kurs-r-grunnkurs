@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# # Oppgaver 4
-
 renv::autoload()
+
+# # Oppgaver 4
 
 library(tidyverse)
 
