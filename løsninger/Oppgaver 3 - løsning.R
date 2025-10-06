@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # # Oppgaver 3
 
 # ## Hent inn pakken `tidyverse` som skal brukes i oppgavene med funksjonen `library()`
@@ -23,17 +25,17 @@ pillar::glimpse(befolkning_per_kommune)
 # glimpse(befolkning_per_kommune)
 summary(befolkning_per_kommune)
 
-# ## Bruk funksjonen `rename()`til å endre navnet på kolonnene `Region` til `kommunenummer` og `value` til `personer`.
+# ## Bruk funksjonen `rename()`til å endre navnet på kolonnene `Region` til `komm_nr` og `value` til `personer`.
 
 befolkning_per_kommune <- befolkning_per_kommune %>%
-  rename(kommunenummer = Region, 
+  rename(komm_nr = Region, 
          personer = value)
 
-# ## Bruk funksjonen `select()` til å fjerne variabelen `Tid` og endre rekkefølgen på kolonnene slik: `kommunenummer`, `kommunenavn`, `personer`.
+# ## Bruk funksjonen `select()` til å fjerne variabelen `Tid` og endre rekkefølgen på kolonnene slik: `komm_nr`, `kommunenavn`, `personer`.
 
 # +
 befolkning_per_kommune <- befolkning_per_kommune %>%
-  select(kommunenummer, kommunenavn, personer)
+  select(komm_nr, kommunenavn, personer)
 
 befolkning_per_kommune %>%
   head()
@@ -44,10 +46,14 @@ befolkning_per_kommune %>%
 befolkning_per_kommune %>%
   filter(kommunenavn == "Bergen")
 
-# ## Bruk funksjonen `filter()` for å beholde kommuner med befolkning på lavere enn eller lik 1000. Hvor mange kommnuner blir det?
+# ## Bruk funksjonen `filter()` for å beholde kommuner med befolkning på lavere enn eller lik 1000 personer. Hvor mange kommnuner blir det?
 
-befolkning_per_kommune %>%
+# +
+kommuner_1000_personer <- befolkning_per_kommune %>%
   filter(personer <= 1000)
+
+nrow(kommuner_1000_personer)
+# -
 
 # ## Hvilke to kommuner har flest og færrest antall innbyggere? Hvor mange innbyggere har disse kommunene?
 
@@ -55,11 +61,11 @@ befolkning_per_kommune %>%
   filter(personer == min(personer) | 
            personer == max(personer))
 
-# ## Bruk funksjonen `mutate()` til å opprette en ny variabel som heter `fylkesnummer` som inneholder fylkesnummeret til hver kommune. Hint: fylkesnummeret er de to første sifrene i kommunenummeret.
+# ## Bruk funksjonen `mutate()` til å opprette en ny variabel som heter `fylke_nr` som inneholder fylkesnummeret til hver kommune. Hint: fylkesnummeret er de to første sifrene i kommunenummeret.
 
 # +
 befolkning_per_kommune <- befolkning_per_kommune %>%
-  mutate(fylkesnummer = substr(kommunenummer, 1, 2))
+  mutate(fylke_nr = substr(komm_nr, 1, 2))
 
 befolkning_per_kommune %>%
   head()
@@ -69,11 +75,11 @@ befolkning_per_kommune %>%
 
 # +
 befolkning_per_fylke_sum <- befolkning_per_kommune %>%
-  group_by(fylkesnummer) %>%
+  group_by(fylke_nr) %>%
   summarise(sum = sum(personer))
 
 befolkning_per_fylke_gjennomsnitt <- befolkning_per_kommune %>%
-  group_by(fylkesnummer) %>%
+  group_by(fylke_nr) %>%
   summarise(gjennomsnitt = mean(personer))
 # -
 
@@ -81,7 +87,7 @@ befolkning_per_fylke_gjennomsnitt <- befolkning_per_kommune %>%
 
 # +
 befolkning_per_fylke_2 <- befolkning_per_fylke_sum %>%
-  left_join(befolkning_per_fylke_gjennomsnitt, by = "fylkesnummer")
+  left_join(befolkning_per_fylke_gjennomsnitt, by = "fylke_nr")
 
 head(befolkning_per_fylke_2)
 # -
@@ -98,22 +104,18 @@ fylkesinndeling[1,]
 colnames(fylkesinndeling)
 # -
 
-# ## Last inn filen "../data/fylkesinndeling.csv" og kall objektet `fylkesinndeling`. Endre navn på kolonnen `V1` til `fylkesnummer` og legg til ledende null med funksjonen `str_pad()`
+# ## Last inn filen "../data/fylkesinndeling.csv" og kall objektet `fylkesinndeling`. Endre navn på kolonnen `V1` til `fylke_nr` og legg til ledende null med funksjonen `str_pad()`
 
-# +
-fylkesinndeling <- read.csv("../data/fylkesinndeling.csv", sep = ";", header = FALSE) %>%
-  rename(fylkesnummer = V1, 
+fylkesinndeling <- read.csv("../data/fylkesinndeling.csv", sep = ";", header = FALSE, encoding = "latin1") %>%
+  rename(fylke_nr = V1, 
          fylkesnavn = V2) %>%
-  mutate(fylkesnummer = stringr::str_pad(fylkesnummer, width = 2, "left", pad = "0"))
-
-fylkesinndeling
-# -
+  mutate(fylke_nr = stringr::str_pad(fylke_nr, width = 2, "left", pad = "0"))
 
 # ## Legg til navn på fylke ved å koble sammen `befolkning_per_fylke_2` og `fylkesinndeling` med funksjonen `full_join()`. Kall det nye objektet `befolkning_per_fylke_3`
 
 # +
 befolkning_per_fylke_3 <- befolkning_per_fylke_2 %>%
-  full_join(fylkesinndeling, by = "fylkesnummer")
+  full_join(fylkesinndeling, by = "fylke_nr")
 
 befolkning_per_fylke_3
 # -
@@ -210,15 +212,22 @@ befolking_per_aldersgrupper <- bind_rows(befolkning_2_hele_landet, befolkning_2_
 # ## Lagre objektet `befolking_per_aldersgrupper` i mappen "../data/" i .csv-format og les deretter inn filen for å kontrollere at filen ble lagret riktig. Lagre også filen i .xlsx og .parquet-format (og les inn filene etterpå)
 
 # +
-write.csv2(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.csv")
+# write.csv2(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.csv", row.names = FALSE)
 
-openxlsx::write.xlsx(befolking_per_aldersgrupper, file = "../data/befolking_per_aldersgrupper.xlsx",
-                     rowNames = FALSE,
-                     showNA = FALSE,
-                     overwrite=T)
+# openxlsx::write.xlsx(befolking_per_aldersgrupper, file = "../data/befolking_per_aldersgrupper.xlsx",
+#                      rowNames = FALSE,
+#                      showNA = FALSE,
+#                      overwrite=T)
 
-arrow::write_parquet(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.parquet")
+# arrow::write_parquet(befolking_per_aldersgrupper, "../data/befolking_per_aldersgrupper.parquet")
+# +
+# befolkning_per_aldersgrupper_csv <- read.csv2("../data/befolking_per_aldersgrupper.csv")
+
+# befolking_per_aldersgrupper_xlsx <- openxlsx::read.xlsx("../data/befolking_per_aldersgrupper.xlsx")
+
+# befolking_per_aldersgrupper_parquet <- arrow::read_parquet("../data/befolking_per_aldersgrupper.parquet")
 # -
+
 
 # ## Åpen oppgave: Les inn et datasett du jobber med og bruk funksjonene `rename()`, `select()`, `filter()`, `group_by()`, `summarise()` osv. til å gjøre gjøre oppgaver du vanligvis må løse.
 

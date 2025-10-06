@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # ## Grunnleggende konsepter i R
-#
+
 # ### Objekter og objekttyper
 # I R kan nesten alt betraktes som et objekt. Objekter kan inneholde ulike typer data og de vanligste objekttypene inkluderer:
 #
@@ -13,7 +15,7 @@
 # + Kan kun inneholde bokstaver, tall, understrek og punktum
 # + Må starte starte med en bokstav eller et punktum
 # + Skiller mellom store og små bokstaver
-# + Unngå reserverte ord (f.eks. `TRUE`/`FALSE`/`NA` og navn på funksjoner)
+# + Unngå reserverte ord (f.eks. `TRUE`/`FALSE`/`NA` og navn på eksisterende funksjoner)
 
 # #### Numeriske verdier
 #
@@ -50,7 +52,7 @@ nevner <- 100
 andel <- teller/nevner*100
 andel
 
-# Funksjonen `round()` brukes til å avrunde desimaltall. 
+# Funksjonen `round()` brukes til å avrunde desimaltall. Desimaltegnet i R er `.` (punktum) og ikke `,` (komma)
 
 tall_med_desimaler <- 10/3
 tall_med_desimaler
@@ -78,15 +80,15 @@ class(karakter_objekt)
 #
 # Vanlige betingelser i R er:
 #
-# + `==`: er det lik?
-# + `!=`: er det ikke lik?
-# + `>`: er det større enn?
-# + `>=`: er det større enn eller lik?
-# + `<`: er det mindre enn?
-# + `<=`: der det mindre enn eller lik?
-# + `%in%`: er det lik én av flere verdier?
-# + `is.na()`: er det missing (NA)?
-# + `!is.na()`: er det ikke missing (NA)?
+# + `==` - er det lik?
+# + `!=` - er det ikke lik?
+# + `>` - er det større enn?
+# + `>=` - er det større enn eller lik?
+# + `<` - er det mindre enn?
+# + `<=` - der det mindre enn eller lik?
+# + `%in%` - er det lik én av flere verdier?
+# + `is.na()` - er det missing (NA)?
+# + `!is.na()` - er det ikke missing (NA)?
 
 "Kongsvinger" == "Kongsvinger" # test for likhet
 
@@ -133,7 +135,7 @@ boolsk_vektor
 c(28, "34", 22)
 c("Anna", 11, "Cecilie")
 
-# For å sjekke hvor mange elementer en vektor inneholder kan man bruke funksjonen `length()`. Fra en vektor er det mulig å hente ut et spesifikt element ut ifra posisjonen den har. Dersom man ønsker å hente ut det andre elementet i en vektor bruker man klammeparentes med tallet 2 i etter navnet på objektet.
+# For å sjekke hvor mange elementer en vektor inneholder kan man bruke funksjonen `length()`. Fra en vektor er det mulig å hente ut et spesifikt element ut ifra posisjonen den har. Dersom man ønsker å hente ut det andre elementet i en vektor bruker man hakeparentes med tallet 2 i etter navnet på objektet.
 
 length(karakter_vektor)
 
@@ -176,7 +178,7 @@ data$aar
 
 unique(data$aar)
 
-# På samme måte om man kan hente ut enkelte elementer fra en vektor kan man hente ut valgte rader og kolonner fra en data frame med `[]`. Her oppgir nummer på rad og kolonne separert med komma, f.eks. rad 1 kolonne 3:
+# På samme måte om man kan hente ut enkelte elementer fra en vektor kan man hente ut valgte rader og kolonner fra en data frame med `[]`. Her oppgir nummer på rad og kolonne separert med komma, f.eks. rad 3 kolonne 1:
 
 data[3,1]
 
@@ -288,7 +290,7 @@ ny_tekst
 aargang <- 2023
 
 if (aargang == 2023){ # Betingelsen i parentes
-  print("Kjør denne koden for 2023-årgangen") # Koden som kjøres dersom betingelsen er TRUE (inne i klammeparentes)
+  print("Kjør denne koden for 2023-årgangen") # Koden som kjøres dersom betingelsen er TRUE (inne i krøllparentes)
 }
 # -
 

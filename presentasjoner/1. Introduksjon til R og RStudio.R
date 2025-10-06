@@ -7,10 +7,10 @@
 # ### Hva er RStudio?
 # RStudio er et integrert utviklingsmiljø (IDE) for R. Det gir et brukervennlig grensesnitt for å skrive, kjøre og feilsøke R-kode. RStudio består av flere komponenter:
 #
-# + `Konsoll`: Der koden kjøres
 # + `Editor`: Der man kan skrive og lagre R-skript
+# + `Konsoll`: Der koden kjøres
 # + `Miljøvindu`: Viser alle objektene som er opprettet i R-sesjonen, dvs. hva som er i dataminnet
-# + `Plot-vindu`: Viser grafer og visualiseringer
+# + `Plot-vindu`: Viser grafer og visualiseringer. Her kan man også få tilgang til filsystemet (filer på Dapla eller Linux) samt dokumentasjon av pakker og funksjoner
 
 # ## R-biblioteker
 #
@@ -20,7 +20,7 @@
 #
 # En funksjon i R er en blokk med kode som utfører en spesifikk oppgave. Funksjoner tar vanligvis inn én eller flere argumenter (input), utfører beregninger eller operasjoner basert på disse argumentene, og returnerer et resultat (output). Funksjoner hjelper med å strukturere koden på en modulær og gjenbrukbar måte.
 #
-# > For å få mer informasjon om en R-pakke kan man skrive `?` etterfulgt av navnet på pakken (f.eks. `?sum`). Da får man opp en hjelpefil med alle gyldige argumenter og eksempler på hvordan man tar i bruk funksjonen.
+# > For å få mer informasjon om en funksjon kan man skrive `?` etterfulgt av navnet på funksjonen (f.eks. `?sum`). Da får man opp en hjelpefil med alle gyldige argumenter og eksempler på hvordan man tar i bruk funksjonen.
 #
 # #### "Base" R-funksjoner
 #
@@ -28,7 +28,7 @@
 #
 # Eksempler på "base" R-funksjoner:
 #
-# + `sum()`: Summerer elementene i et vektor.
+# + `sum()`: Summerer elementene i en vektor.
 # + `mean()`: Beregner gjennomsnittet av et sett med tall.
 # + `print()`: Skriver ut verdier til konsollen.
 #

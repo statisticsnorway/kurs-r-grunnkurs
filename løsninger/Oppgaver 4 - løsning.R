@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
+renv::autoload()
+
 # # Oppgaver 4
 
 library(tidyverse)
 
 # ## Uføretrygdede
+#
+# > Du skal finne andelen personer mellom 18 og 67 år som mottar uføretrygd i hvert fylke og sjekke at denne andelen stemmer med den som rapporteres i tabellen for uføretrygdede.
 #
 # Last inn datasettene `uforetrygdede` og `befolkning` i cellen nedenfor.
 # + `uforetrygdede` - tabell 11695: Uføretrygdede, etter kjønn
@@ -59,7 +63,7 @@ filter(nchar(Region) == 2,
 left_join(befolkning_18_67_per_fylke, by = c("Region" = "Region_ny")) %>%
 mutate(andel = round(value/personer*100, digits = 1))
 
-trygd_pros_statbank <- trygd %>%
+trygd_pros_statbank <- uforetrygdede %>%
 filter(nchar(Region) == 2, 
        ContentsCode == "UforetrygdPros",
        Kjonn == 0,
@@ -74,12 +78,14 @@ mutate(diff = andel-UforetrygdPros)
 
 # ## Yrkesfordelt månedslønn
 #
+# > Du skal lage et datasett som viser gjennomsnittlig månedslønn på ulike detaljeringsnivåer i yrkeskoder, slik at du kan sammenligne lønnsnivået for spesifikke yrker med de mer overordnede yrkesgruppene de tilhører.
+#
 # Last inn objektene `yrkesfordelt_manedslonn` og `yrkesklassifisering_klass` i cellen nedenfor. Variabelen `Yrke` inneholder ulike yrkeskoder med 1-4 siffer.
 # + `yrkesfordelt_manedslonn`: - tabell 11418: Yrkesfordelt månedslønn, etter sektor, kjønn og arbeidstid
 # + `yrkesklassifisering_klass` - klassifiksjon 7: Standard for yrkesklassifisering
 #
 # Lag et nytt objekt som heter `yrkesfordelt_manedslonn_4` som kun inneholder rader med yrkeskoder som består av fire siffer. 
-# + Endre navn på variablene `Yrke` og `value`  til henholdsvis `Yrke_4` og `Manedslonn_4`. Gjør deretter det samme med yrker med 3, 2 og 1 siffer slik at du endre opp med totalt fire datasett med forskjellige nivåer av yrkeskoder (`yrkesfordelt_manedslonn_4`, `yrkesfordelt_manedslonn_3`, ,`yrkesfordelt_manedslonn_2` `yrkesfordelt_manedslonn_1`).
+# + Endre navn på variablene `Yrke` og `value`  til henholdsvis `Yrke_4` og `Manedslonn_4`. Gjør deretter det samme med yrker med 3, 2 og 1 siffer slik at du endre opp med totalt fire datasett med forskjellige nivåer av yrkeskoder (`yrkesfordelt_manedslonn_4`, `yrkesfordelt_manedslonn_3`, `yrkesfordelt_manedslonn_2` og `yrkesfordelt_manedslonn_1`).
 # + Opprett tre nye variabler (`Yrke_3`, `Yrke_2` og `Yrke_1`) i datasettet `yrkesfordelt_manedslonn_4` som inneholder de 3 første, 2 første og det første sifferet i variabelen `Yrke_4`.
 # + Koble deretter sammen alle objektene slik at datasettet inneholder alle disse kolonnene: `Yrke_4`, `Manedslonn_4`, `Yrke_3`, `Yrke_2`, `Yrke_1`, `Manedslonn_3`, `Manedslonn_2`, `Manedslonn_1`
 # + Koble på slutt navn på yrkesvariablene fra kodelisten `yrkesklassifisering_klass`
@@ -141,8 +147,10 @@ filter(Yrke_4 %in% yrke)
 
 # ## Barnevern
 #
+# > Du skal beregne hvor mange barnevernsmeldinger det er per 1 000 innbyggere i alderen 0–24 år i hvert fylke, og kontrollere at resultatet stemmer med den ferdigberegnede indikatoren i barnevernstabellen.
+#
 # Lag et nytt objekt `befolkning_0_24_per_fylke` ut fra `befolkning` der du har gjort følgende:
-# + Opprett en ny variabel som heter `Alder_num` som inneholder verdiene fdra `Alder` omgjort til numerisk
+# + Opprett en ny variabel som heter `Alder_num` som inneholder verdiene fra `Alder` omgjort til numerisk
 # + Opprett en ny variabel som heter `Region_ny` der følgende verdier fra `Region` har blitt omkodet (øvrige verdier skal være uendret):
 # + + Viken: 31, 32, 33 -> 30 
 # + + Vestfold og Telemark: 39, 40 -> 38
@@ -151,7 +159,7 @@ filter(Yrke_4 %in% yrke)
 # + Grupper datasettet etter variabelen `Region_ny` og beregn sum etter kolonnen `value`. Kall den nye variabelen med sum for `personer`
 #
 # Lag et nytt objekt `barnevern_per_1000` ut fra `barnevern` der du har gjort følgende:
-# + Filtrer rader der `ContentsCode` er lik "Melding", `Region` inneholder mønsteret "^[0-9]{2}$" og `value` ikke inneholder missing-verdier.
+# + Filtrer rader der `ContentsCode` er lik "Melding", `Region` inneholder mønsteret `^[0-9]{2}$` og `value` ikke inneholder missing-verdier.
 # + Kobler på `befolkning_0_24_per_fylke` etter køblingsnøkkelen `c(Region = Region_ny)`
 # + Oppretter en ny variabel `melding_per_1000` som inneholder meldinger per 1000 barn per fylke. Rund av til én desimal
 # + Sjekk at resultatene blir det samme som i objektet `barnevern` (`ContentsCode` = "MeldingPer1000")

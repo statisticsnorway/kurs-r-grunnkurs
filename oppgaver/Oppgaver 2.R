@@ -49,7 +49,7 @@
 
 
 
-# ## Bruk funksjonen `paste()` til å lime sammen objektene `navn` og `alder` til en setning (f.eks. "NAVN er ALDER år gammel"). Prøv deretter å endre fra funksjonen `paste()` til `paste0()` og se hvordan setningen endrer seg. Juster koden slik at den blir lik som den første. 
+# ## Bruk funksjonen `paste()` til å lime sammen objektene `navn` og `alder` til en setning (f.eks. "NAVN er ALDER år gammel"). Prøv deretter å endre fra funksjonen `paste()` til `paste0()` og se hvordan setningen endrer seg. Juster koden slik at den blir lik som den første. Lag til slutt den samme setningen med funksjonen `glue::glue()`
 
 
 # ## Opprett følgende objekter:
@@ -61,7 +61,7 @@
 #  
 # > `flygende_objekter_p2019_v1.parquet`
 #  
-# Sett sammen `navn`, `aargang` og `versjon` og sett resultatet til `filnavn`, slik at filnavnet stemmer med navnestandarden.
+# Sett sammen `navn`, `aargang` og `versjon` og sett resultatet til `filnavn`, slik at filnavnet stemmer med navnestandarden. Print deretter innholdet i `filnavn` i konsollen for å kontrollere at det har blitt riktig satt sammen. 
 
 
 
@@ -79,19 +79,19 @@
 
 # ## Norske kommunenummer er firesifrede på formen FFKK, der FF er fylkesnummeret og KK er et løpenummer innenfor fylket.
 #  
-# Lag et objekt `kommunenummer` med et valgfritt kommunenummer og bruk R til å hente ut det korresponderende fylkesnummeret `fylkesnummer` til kommunen. Print ut en passende tekst som inneholder `kommunenummer` og `fylkesnummer`. Oppdater `kommunenummer` med ulike kommunenumre og sjekk at koden din stemmer.
+# Lag et objekt `komm_nr` med et valgfritt [kommunenummer](https://www.ssb.no/klass/klassifikasjoner/131) og bruk R til å hente ut det korresponderende fylkesnummeret `fylke_nr` til kommunen. Print ut en passende tekst som inneholder `komm_nr` og `fylke_nr`. Oppdater `komm_nr` med ulike kommunenumre og sjekk at koden din stemmer.
 
 
 
-# ## Bruk funksjonen `str_pad()` til å omgjøre `kommunenummer` og `fylkesnummer` til å bestå av 8 tegn. Fyll inn med 0.
+# ## Bruk funksjonen `stringr::str_pad()` til å omgjøre `komm_nr` og `fylke_nr` til å bestå av 8 tegn. Fyll inn med 0.
 
 
 
-# ## Bruk funksjonen `str_extract()` for å hente kommunenummeret fra denne tekststrengen: "Oslo har kommunenummer 0301"
+# ## Bruk funksjonen `stringr::str_extract()` for å hente kommunenummeret fra denne tekststrengen: "Oslo har kommunenummer 0301"
 
 
 
-# ## Gjør det samme som i forrige oppgave, men lag en test om strengen inneholder tall (`TRUE`/`FALSE`)
+# ## Gjør det samme som i forrige oppgave, men lag en test om strengen inneholder tall (TRUE/FALSE)
 
 
 
@@ -107,11 +107,11 @@
 
 
 
-# ## Lag en test for å sjekke om "Melk" finnes i `handleliste`.
+# ## Lag en test for å sjekke om "Brød" finnes i `handleliste`.
 
 
 
-# ## Omgjør `handleliste` til en data frame og hent ut den fjerde raden.
+# ## Omgjør `handleliste` til en data frame og hent ut den andre raden.
 
 
 
@@ -136,13 +136,13 @@
 
 
 # ## Lag din egen data frame ved å bruke det du har lært om vektorer. Lag deg en miniversjon med fiktive data av et datasett du jobber med. Pass på at det er like mange elementer i hver vektor/kolonne.
-#
-# Eksempel:
 
 # +
-data <- data.frame(AARGANG = 2024,
-                   KOMMUNE = c('0301', '0301', '0301', '5001', '4601'),
-                   SYKEHUS = c('Ullevål', 'Rikshospitalet', 'Aker', 'St. Olavs', 'Haukeland'),
-                   PLASS = c(120, 150, 89, 41, 64))
+# Eksempel:
 
-summary(data)
+# data <- data.frame(aargang = 2024,
+#                    komm_nr = c('0301', '0301', '0301', '5001', '4601'),
+#                    sykehus = c('Ullevål', 'Rikshospitalet', 'Aker', 'St. Olavs', 'Haukeland'),
+#                    plass = c(120, 150, 89, 41, 64))
+
+# summary(data)
