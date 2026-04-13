@@ -17,6 +17,8 @@ Kursmateriell ligger i dette repoet (_repository_), som er på SSBs Github-områ
 
 For å få mest nytte av kurset kan du klone repoet i RStudio. Du starter RStudio Server i [Dapla Lab](https://lab.dapla.ssb.no/) ved å klikke på «My Services» -> «New Service» -> «Rstudio». Deretter kan du legge til lenken til repo-et under fanen «Git/GitHub» før oppstart.
 
+[Her er en lenke](https://lab.dapla.ssb.no/launcher/dapla-lab-standard/rstudio?name=kurs-r-grunnkurs&version=0.14.13&gitConfig.github.repository=«https%3A%2F%2Fgithub.com%2Fstatisticsnorway%2Fkurs-r-grunnkurs.git»&avansert.startupScript.scriptPath=«ssb-fellesr%2Fscripts%2Fstartup-rstudio.sh»&autoLaunch=true) til et ferdig oppsett til en RStudio-tjeneste på Dapla Lab.
+
 #### Dapla Lab
 
 Vi vil bruke R i RStudio Server og Jupyterlab i Dapla Lab i kurset. Vi anbefaler at du tester dette ut litt på forhånd hvis du ikke er kjent med miljøet. 
