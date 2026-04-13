@@ -231,6 +231,10 @@ aargang <- 2024
 filsti <- paste0("C:/Data/Prosjekt/Aargang_", aargang, "/resultater_", aargang, ".csv")
 filsti
 
+aargang <- 2025
+filsti <- glue::glue("C:/Data/Prosjekt/Aargang_{aargang}/resultater_{aargang}.csv")
+filsti
+
 # #### Plukk ut deler av en streng
 #
 # + `nchar()`: antall karakterer i en streng
@@ -249,7 +253,10 @@ substr(2024, 3, 4)
 kommunenummer <- 0301
 kommunenummer
 
-stringr::str_pad(kommunenummer, width = 4, "left", pad = "0")
+stringr::str_pad(kommunenummer, 
+                 width = 4, 
+                 side = "left", 
+                 pad = "0")
 # -
 
 # #### Erstatt mønstre i en karakterstreng
